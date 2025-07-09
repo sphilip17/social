@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sareena Philip | Project & Product Manager</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* Custom styles for the page */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* Dark blue-gray background */
+            color: #E5E7EB; /* Light gray text */
+        }
+
+        /* Gradient text for headers */
+        .gradient-text {
+            background: linear-gradient(to right, #38bdf8, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Animated button styles */
+        .animated-button {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+            z-index: 1;
+        }
+        .animated-button:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background-color: #38bdf8; /* Light blue on hover */
+            transition: all 0.3s ease-in-out;
+            z-index: -1;
+        }
+        .animated-button:hover:before {
+            height: 100%;
+        }
+        .animated-button:hover {
+            color: #111827; /* Dark text on hover */
+            border-color: #38bdf8;
+        }
+
+        /* Animated skill tags */
+        .skill-tag {
+            transition: transform 0.2s ease-in-out;
+        }
+        .skill-tag:hover {
+            transform: scale(1.1) rotate(3deg);
+        }
+
+        /* Styles for the curved experience roadmap */
+        .curved-roadmap-container {
+            position: relative;
+            width: 100%;
+            min-height: 1700px; /* Increased height for better spacing */
+        }
+        .curved-roadmap-path {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        .experience-item {
+            position: absolute;
+            width: 45%;
+            background-color: #1F2937;
+            border: 1px solid #374151;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.2), 0 4px 6px -2px rgba(0,0,0,0.1);
+            z-index: 10;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Added transition for hover */
+        }
+        .experience-item:hover {
+            transform: scale(1.05); /* "Pop out" effect on hover */
+            box-shadow: 0 20px 25px -5px rgba(4,103,151,0.3), 0 10px 10px -5px rgba(0,0,0,0.2); /* Enhanced shadow */
+            z-index: 20; /* Ensure hovered item is on top */
+        }
+
+        .experience-item .plane-icon {
+            position: absolute;
+            top: -25px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #38bdf8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid #111827;
+            color: #111827;
+            font-size: 1.5rem;
+        }
+        /* Positioning for each item on the curve - Adjusted for spacing */
+        #exp-item-1 { top: 1%; left: 5%; }
+        #exp-item-1 .plane-icon { left: calc(100% - 25px); }
+
+        #exp-item-2 { top: 25%; right: 5%; }
+        #exp-item-2 .plane-icon { right: calc(100% - 25px); }
+
+        #exp-item-3 { top: 50%; left: 5%; }
+        #exp-item-3 .plane-icon { left: calc(100% - 25px); }
+
+        #exp-item-4 { top: 75%; right: 5%; }
+        #exp-item-4 .plane-icon { right: calc(100% - 25px); }
+
+        /* Responsive adjustments for the roadmap */
+        @media (max-width: 767px) {
+            .curved-roadmap-path {
+                display: none; /* Hide the curve on mobile */
+            }
+            .curved-roadmap-container {
+                min-height: auto; /* Reset height */
+            }
+            .experience-item {
+                position: relative; /* Stack them vertically */
+                width: 100%;
+                left: auto !important;
+                right: auto !important;
+                top: auto !important;
+                margin-bottom: 4rem; /* Add space between items */
+            }
+            .experience-item .plane-icon {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Fade-in animation on scroll */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Photo booth styles */
+        .photo-booth-img {
+            background-color: white;
+            border: 10px solid white;
+            border-bottom-width: 45px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transform: rotate(-2deg);
+            transition: transform 0.3s ease;
+        }
+        .photo-booth-img:hover {
+            transform: rotate(2deg) scale(1.05);
+        }
+        .photo-booth-img:nth-child(2) { transform: rotate(5deg); }
+        .photo-booth-img:nth-child(2):hover { transform: rotate(-3deg) scale(1.05); }
+        .photo-booth-img:nth-child(3) { transform: rotate(-5deg); }
+        .photo-booth-img:nth-child(3):hover { transform: rotate(3deg) scale(1.05); }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="fixed top-0 left-0 right-0 bg-gray-900/80 backdrop-blur-sm z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-white">Sareena Philip</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#summary" class="text-gray-300 hover:text-sky-400 transition">About</a>
+                <a href="#skills" class="text-gray-300 hover:text-sky-400 transition">Skills</a>
+                <a href="#experience" class="text-gray-300 hover:text-sky-400 transition">Experience</a>
+                <a href="#projects" class="text-gray-300 hover:text-sky-400 transition">Projects</a>
+                <a href="#education" class="text-gray-300 hover:text-sky-400 transition">Education</a>
+                <a href="#contact" class="text-gray-300 hover:text-sky-400 transition">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="pt-24">
+
+        <section class="min-h-screen flex items-center justify-center text-center px-6">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4">
+                    From a passion for process to a career in project management.
+                </h1>
+                <p class="text-lg md:text-xl text-gray-300 mb-8">
+                    Every great achievement begins with a single step. Mine started with a fascination for turning complex challenges into streamlined successes.
+                </p>
+                <a href="#summary" class="animated-button inline-block text-white font-bold py-3 px-8 border-2 border-white rounded-full text-lg">
+                    Step Into My Journey
+                </a>
+            </div>
+        </section>
+
+        <section id="summary" class="py-20 md:py-32 fade-in-section">
+            <div class="container mx-auto px-6">
+                <div class="grid md:grid-cols-3 gap-12 items-center">
+                    <div class="md:col-span-2">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4"><span class="gradient-text">About Me</span></h2>
+                        <p class="text-gray-300 text-lg mb-4">
+                            A Certified Technical Business Analyst and Scrum Master with 3+ years of experience bridging business requirements and technical solutions across IT, ERP systems, and data analytics. I have a proven expertise in coordinating cross-functional teams, refining project intake processes, analyzing project health data, and supporting tool adoption (Jira, Power BI, SharePoint) to enhance portfolio visibility.
+                        </p>
+                        <p class="text-gray-300 text-lg">
+                            I am passionate about leading teams to untangle complex problems, optimize processes, and deliver projects that not only meet but exceed expectations. My goal is to create value and drive growth by transforming ambitious ideas into tangible results.
+                        </p>
+                    </div>
+                    <div>
+                        <img src="https://i.ibb.co/4n8hbCQ4/Whats-App-Image-2025-07-07-at-9-47-08-PM.jpg" alt="Sareena Philip" class="rounded-full shadow-2xl mx-auto w-64 h-64 md:w-80 md:h-80 object-cover border-4 border-gray-700">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="py-20 md:py-32 bg-gray-900 fade-in-section">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12"><span class="gradient-text">My Toolkit</span></h2>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-2xl font-semibold text-sky-400 mb-6">Tools & Technologies</h3>
+                        <div class="flex flex-wrap justify-center gap-3">
+                            <span class="skill-tag bg-gray-700 text-white py-2 px-4 rounded-full">Jira</span>
+                            <span class="skill-tag bg-gray-700 text-white py-2 px-4 rounded-full">Confluence</span>
+                            <span class="skill-tag bg-gray-700 text-white py-2 px-4 rounded-full">Power BI</span>
+                            <span class="skill-tag bg-gray-700 text-white py-2 px-4 rounded-full">SharePoint</span>
+                            <span class="skill-tag bg-gray-700 text-white py-2 px-4 rounded-full">MS Project</span>
+                            <span class="skill-tag bg-gray-700 text-white py-2 px-4 rounded-full">SQL</span>
+                            <span class="skill-tag bg-gray-700 text-white py-2 px-4 rounded-full">SourceTree</span>
+                            <span class="skill-tag bg-gray-700 text-white py-2 px-4 rounded-full">GitHub</span>
+                            <span class="skill-tag bg-gray-700 text-white py-2 px-4 rounded-full">Insight ERP</span>
+                            <span class="skill-tag bg-gray-700 text-white py-2 px-4 rounded-full">Smartsheet</span>
+                             <span class="skill-tag bg-gray-700 text-white py-2 px-4 rounded-full">Visio</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-sky-400 mb-6">Project & Process Management</h3>
+                        <div class="flex flex-wrap justify-center gap-3">
+                            <span class="skill-tag bg-gray-700 text-white py-2 px-4 rounded-full">Agile</span>
+                            <span class="skill-tag bg-gray-700 text-white py-2 px-4 rounded-full">Scrum</span>
+                             <span class="skill-tag bg-gray-700 text-white py-2 px-4 rounded-full">Waterfall</span>
+                            <span class="skill-tag bg-gray-700 text-white py-2 px-4 rounded-full">PMO Governance</span>
+                            <span class="skill-tag bg-gray-700 text-white py-2 px-4 rounded-full">Project Intake</span>
+                            <span class="skill-tag bg-gray-700 text-white py-2 px-4 rounded-full">Risk Management</span>
+                            <span class="skill-tag bg-gray-700 text-white py-2 px-4 rounded-full">Continuous Improvement</span>
+                            <span class="skill-tag bg-gray-700 text-white py-2 px-4 rounded-full">Stakeholder Management</span>
+                            <span class="skill-tag bg-gray-700 text-white py-2 px-4 rounded-full">Technical Documentation</span>
+                            <span class="skill-tag bg-gray-700 text-white py-2 px-4 rounded-full">Data Visualization</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="py-20 md:py-32 fade-in-section">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-20"><span class="gradient-text">My Career Journey</span></h2>
+                <div class="curved-roadmap-container">
+                    <svg class="curved-roadmap-path hidden md:block" viewBox="0 0 500 1700" preserveAspectRatio="none">
+                        <path d="M 250 85 Q 50 425, 250 850 T 450 1600" stroke="#374151" stroke-width="4" fill="none" stroke-dasharray="10,10"/>
+                    </svg>
+                    
+                    <div id="exp-item-1" class="experience-item">
+                        <div class="plane-icon"><i class="fa-solid fa-plane-departure"></i></div>
+                        <p class="text-sm text-sky-400 font-semibold">JULY 2024 - PRESENT</p>
+                        <h3 class="text-xl font-bold text-white mt-1">Application Analyst | Scrum Master</h3>
+                        <p class="text-md text-gray-400 mb-4">Wisenbaker Builder Services, Houston, TX</p>
+                        <ul class="space-y-2 text-left text-gray-300">
+                            <li class="flex items-start"><i class="fa-solid fa-check text-sky-400 mt-1 mr-2"></i><span>Created 10+ Power BI dashboards integrated with 2020 Insight ERP and SQL Database to visualize real-time metrics, enabling data-driven decisiocn-making and reducing reporting time by 30%.</span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-sky-400 mt-1 mr-2"></i><span>Engineered end-to-end data pipeline solutions using SQL queries, SP, and ETL processes to extract, transform, and load data from multiple sources, improving data accuracy by 25% and enabling automated reporting workflows.</span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-sky-400 mt-1 mr-2"></i><span>Implemented Agile methodology transformation using Jira workflows and process automation, reducing project lead time by 20% while conducting data integrity with revamped SQL scripts for real-time project health monitoring.</span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-sky-400 mt-1 mr-2"></i><span>Managed vendor relationships and project scoping initiatives, working closely with external vendors to develop technical specifications and deliver spec book that improved cross-functional team productivity by 40%.</span></li>
+                        </ul>
+                    </div>
+                    
+                    <div id="exp-item-2" class="experience-item text-right">
+                        <div class="plane-icon"><i class="fa-solid fa-plane"></i></div>
+                        <p class="text-sm text-sky-400 font-semibold">MAY 2023 - AUG 2023</p>
+                        <h3 class="text-xl font-bold text-white mt-1">Technical Project Coordinator</h3>
+                        <p class="text-md text-gray-400 mb-4">Catalent Pharma Solutions, Somerset, NJ</p>
+                        <ul class="space-y-2 text-left text-gray-300">
+                              <li class="flex items-start"><i class="fa-solid fa-check text-sky-400 mt-1 mr-2"></i><span>Designed and developed SharePoint-based business intelligence portal using Power Platform and guided workflows, improving cross-departmental data traceability and enhancing CAPEX forecasting accuracy by 20%.</span></li>
+                              <li class="flex items-start"><i class="fa-solid fa-check text-sky-400 mt-1 mr-2"></i><span>Designed and launched comprehensive SharePoint site for cross-departmental documentation and knowledge management, implementing custom workflows, document libraries, and controlled approval processes that enhanced collaboration.</span></li>
+                              <li class="flex items-start"><i class="fa-solid fa-check text-sky-400 mt-1 mr-2"></i><span>Collaborated with development teams using GitHub, SourceTree, and Bitbucket for source code management, coordinating code repositories, version control, and deployment workflows to ensure seamless integration of data.</span></li>
+                             <li class="flex items-start"><i class="fa-solid fa-check text-sky-400 mt-1 mr-2"></i><span>Streamlined Voice of Customer (VoC) feedback system using SharePoint workflows, and custom integrations, reducing interdepartmental communication lag by 25% and improving project visibility across multiple departments.</span></li>
+                       </ul>
+                   </div>
+
+                    <div id="exp-item-3" class="experience-item">
+                        <div class="plane-icon"><i class="fa-solid fa-plane"></i></div>
+                        <p class="text-sm text-sky-400 font-semibold">SEPT 2022 - MAY 2024</p>
+                        <h3 class="text-xl font-bold text-white mt-1">Graduate Program Coordinator</h3>
+                        <p class="text-md text-gray-400 mb-4">Illinois Institute of Technology, Chicago, IL</p>
+                        <ul class="space-y-2 text-left text-gray-300">
+                            <li class="flex items-start"><i class="fa-solid fa-check text-sky-400 mt-1 mr-2"></i><span>Developed and delivered Salesforce CRM training to a 15-member team, reducing ticket resolution time and enhancing user engagement workflows.</span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-sky-400 mt-1 mr-2"></i><span>Synthesized VOC feedback to optimize data tracking processes, streamlining documentation workflows and reducing response lag by 30%.</span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-sky-400 mt-1 mr-2"></i><span>Supported reporting and documentation of cross-campus exchange initiatives and collaborated with tech and admissions teams to update web assets and internal SharePoint content.</span></li>
+                        </ul>
+                    </div>
+                    
+                    <div id="exp-item-4" class="experience-item text-right">
+                        <div class="plane-icon"><i class="fa-solid fa-plane-arrival"></i></div>
+                        <p class="text-sm text-sky-400 font-semibold">JUN 2021 - JUL 2022</p>
+                        <h3 class="text-xl font-bold text-white mt-1">Application Analyst</h3>
+                        <p class="text-md text-gray-400 mb-4">Decimal Technologies, Gurugram, India</p>
+                          <ul class="space-y-2 text-left text-gray-300">
+                            <li class="flex items-start"><i class="fa-solid fa-check text-sky-400 mt-1 mr-2"></i><span>Developed mobile and web applications for banking sector clients using Vahana low-code platform and REST APIs, delivering scalable financial software solutions with secure transaction processing capabilities and rapid application development.</span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-sky-400 mt-1 mr-2"></i><span>Collaborated with business stakeholders to gather requirements and translate complex banking business logic into technical specifications, ensuring compliance with financial regulations and security standards.</span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-sky-400 mt-1 mr-2"></i><span>Managed Agile development lifecycle using Jira for 7+ development teams, leading sprint planning, user story creation, and backlog refinement while maintaining code quality and delivery timelines.</span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-sky-400 mt-1 mr-2"></i><span>Proposed API integrations and database solutions for banking applications, designing secure data models and optimizing database performance for high-volume financial transactions.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="py-20 md:py-32 bg-gray-900 fade-in-section">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12"><span class="gradient-text">Featured Projects</span></h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-gray-800 p-8 rounded-lg shadow-lg flex flex-col">
+                        <h3 class="text-2xl font-bold text-sky-400">Agile Transformation & Jira Automation</h3>
+                        <p class="text-md text-gray-400 mb-4">Wisenbaker Builder Services</p>
+                        <p class="text-gray-300 flex-grow">Led a strategic initiative to implement Agile methodologies (Scrum/Kanban) and automated Jira workflows. This project enhanced team collaboration, accountability, and delivery speed, resulting in a 20% reduction in project lead times and a significant decrease in implementation defects.</p>
+                    </div>
+                    <div class="bg-gray-800 p-8 rounded-lg shadow-lg flex flex-col">
+                        <h3 class="text-2xl font-bold text-sky-400">Manufacturing BI & Data Pipeline</h3>
+                        <p class="text-md text-gray-400 mb-4">Wisenbaker Builder Services</p>
+                        <p class="text-gray-300 flex-grow">Engineered and deployed an end-to-end data solution, including ETL processes and over 10 interactive Power BI dashboards. This system provided real-time production metrics from the Insight ERP, empowering data-driven decisions on the manufacturing floor and cutting reporting time by 30%.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="volunteer" class="py-20 md:py-32 fade-in-section">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12"><span class="gradient-text">Volunteer & Leadership</span></h2>
+                <div class="max-w-3xl mx-auto bg-gray-800 p-8 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold text-sky-400">Knowledge Sharing Technical Manager</h3>
+                    <p class="text-md text-gray-400 mb-4">PMI | Mar 2024 – Dec 2024</p>
+                    <ul class="space-y-2 text-left text-gray-300">
+                        <li class="flex items-start"><i class="fa-solid fa-check text-sky-400 mt-1 mr-2"></i><span>Led technical knowledge-sharing initiatives to define and optimize project management workflows for the PMI community, enhancing member engagement and resource accessibility.</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-sky-400 mt-1 mr-2"></i><span>Coordinated and facilitated cross-industry collaboration sessions and webinars with 50–60 participants, fostering a community of continuous learning and professional development.</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="py-20 md:py-32 bg-gray-900 fade-in-section">
+            <div class="container mx-auto px-6">
+                <div class="grid md:grid-cols-2 gap-16">
+                    <div class="text-center md:text-left">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-8"><span class="gradient-text">Education</span></h2>
+                        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                            <h3 class="text-xl font-bold text-white">Masters in Management Information Systems</h3>
+                            <p class="text-sky-400">Illinois Institute of Technology</p>
+                            <p class="text-gray-400 text-sm">2022 - 2024</p>
+                        </div>
+                        <div class="bg-gray-800 p-6 rounded-lg shadow-lg mt-6">
+                            <h3 class="text-xl font-bold text-white">Bachelors in Computer Science</h3>
+                            <p class="text-sky-400">Guru Gobind Singh Indraprastha University</p>
+                            <p class="text-gray-400 text-sm">2018 - 2021</p>
+                        </div>
+                    </div>
+                    <div class="text-center md:text-left">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-8"><span class="gradient-text">Certifications</span></h2>
+                        <div class="grid grid-cols-2 gap-4">
+                            <button onclick="window.open('https://drive.google.com/file/d/1k8xAkD09GsfxFKwVbAlq1-rPVWv0mMQY/view?usp=sharing', '_blank')">
+                                <div class="bg-gray-800 p-4 rounded-lg text-center shadow-lg">
+                                    <p class="font-bold text-white">PMP</p>
+                                    <p class="text-xs text-sky-400">Project Management Professional</p>
+                                </div>
+                            </button>
+                            <button onclick="window.open('https://drive.google.com/file/d/1MI6mj5JhmNGWHiR6j9JHzUTMMZLPY3Cj/view?usp=sharing', '_blank')">
+                                <div class="bg-gray-800 p-4 rounded-lg text-center shadow-lg">
+                                    <p class="font-bold text-white">CAPM</p>
+                                    <p class="text-xs text-sky-400">Certified Associate in Project Management</p>
+                                </div>
+                            </button>
+                            <button onclick="window.open('https://drive.google.com/file/d/1fUAvAfriFjPZR5ubDS1H8W_T76CTmQuC/view?usp=sharing', '_blank')">
+                                <div class="bg-gray-800 p-4 rounded-lg text-center shadow-lg">
+                                    <p class="font-bold text-white">CSM</p>
+                                    <p class="text-xs text-sky-400">Certified ScrumMaster</p>
+                                </div>
+                            </button>
+                            <button onclick="window.open('https://drive.google.com/file/d/1qH_GsRWmUpRQpHCyXTRf72mlYCTDxBMT/view?usp=sharing', '_blank')">
+                                <div class="bg-gray-800 p-4 rounded-lg text-center shadow-lg">
+                                    <p class="font-bold text-white">Google PM</p>
+                                    <p class="text-xs text-sky-400">Google Project Management</p>
+                                </div>
+                            </button>
+                            <button onclick="window.open('https://drive.google.com/file/d/164Y0GNla0psIeDiQC-06v579dzjBGipD/view?usp=sharing', '_blank')">
+                                <div class="bg-gray-800 p-4 rounded-lg text-center shadow-lg">
+                                    <p class="font-bold text-white">Six Sigma</p>
+                                    <p class="text-xs text-sky-400">White Belt Certified</p>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="events" class="py-20 md:py-32 fade-in-section">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4"><span class="gradient-text">Event Highlights</span></h2>
+                <p class="text-gray-400 mb-12 max-w-2xl mx-auto">A few snapshots from conferences, workshops, and team events I've been a part of.</p>
+                <div class="flex flex-wrap justify-center items-center gap-8">
+                    <div class="photo-booth-img">
+                        <img src="https://i.ibb.co/GfBHhgpD/Screenshot-2025-07-08-203500.png" alt="Event photo 1" style="width:250px;height:250px;object-fit:cover;">
+                    </div>
+                    <div class="photo-booth-img">
+                        <img src="https://i.ibb.co/5xknv5yL/Screenshot-2025-07-08-204055.png" alt="Event photo 2" style="width:250px;height:250px;object-fit:cover;">
+                    </div>
+                    <div class="photo-booth-img">
+                        <img src="https://i.ibb.co/B2b6b5Bm/Screenshot-2025-07-08-204127.png" alt="Event photo 3" style="width:250px;height:250px;object-fit:cover;">
+                    </div>
+                     <div class="photo-booth-img">
+                        <img src="https://i.ibb.co/B2QKvhyk/Screenshot-2025-07-08-213854.png" alt="Event photo 4" style="width:250px;height:250px;object-fit:cover;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="contact" class="bg-gray-900 border-t border-gray-700">
+        <div class="container mx-auto px-6 py-12 text-center">
+            <h2 class="text-3xl font-bold text-white mb-4">Let's Connect</h2>
+            <p class="text-gray-400 mb-8 max-w-xl mx-auto">I'm always open to discussing new projects, creative ideas, or opportunities to be part of an ambitious team. Feel free to reach out.</p>
+            <div class="flex justify-center items-center space-x-8 text-3xl">
+                <a href="mailto:sareenaphilip15@gmail.com" class="text-gray-400 hover:text-sky-400 transition" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/sareena-philip" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-sky-400 transition" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+            <p class="text-gray-500 mt-12 text-sm">&copy; 2025 Sareena Philip. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for fade-in animations on scroll
+        const sections = document.querySelectorAll('.fade-in-section');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+
+</body>
+</html>
