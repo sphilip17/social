@@ -3,470 +3,860 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sareena Philip | Project & Product Manager</title>
+    <title>Sareena Philip | Technical Project Manager</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* Custom styles for the page */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #111827; /* Dark blue-gray background */
-            color: #E5E7EB; /* Light gray text */
+        /* Custom Styles for Premium Feel */
+        :root {
+            --primary: #0f172a;
+            --accent: #06b6d4;
+            --accent-glow: #8b5cf6;
         }
 
-        /* Gradient text for headers */
-        .gradient-text {
-            background: linear-gradient(to right, #38bdf8, #a78bfa);
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--primary);
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Glassmorphism Class */
+        .glass {
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .glass:hover {
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.15);
+        }
+
+        /* Gradient Text */
+        .text-gradient {
+            background: linear-gradient(to right, #22d3ee, #a78bfa);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        /* Animated button styles */
-        .animated-button {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease-in-out;
-            z-index: 1;
-        }
-        .animated-button:before {
-            content: '';
+        /* Background Animation */
+        .blob {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 0;
-            background-color: #38bdf8; /* Light blue on hover */
-            transition: all 0.3s ease-in-out;
-            z-index: -1;
-        }
-        .animated-button:hover:before {
-            height: 100%;
-        }
-        .animated-button:hover {
-            color: #111827; /* Dark text on hover */
-            border-color: #38bdf8;
-        }
-
-        /* Animated skill tags */
-        .skill-tag {
-            transition: transform 0.2s ease-in-out;
-        }
-        .skill-tag:hover {
-            transform: scale(1.1) rotate(3deg);
-        }
-
-        /* Styles for the curved experience roadmap */
-        .curved-roadmap-container {
-            position: relative;
-            width: 100%;
-            min-height: 1700px; /* Increased height for better spacing */
-        }
-        .curved-roadmap-path {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-        }
-        .experience-item {
-            position: absolute;
-            width: 45%;
-            background-color: #1F2937;
-            border: 1px solid #374151;
-            padding: 1.5rem;
-            border-radius: 0.75rem;
-            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.2), 0 4px 6px -2px rgba(0,0,0,0.1);
-            z-index: 10;
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Added transition for hover */
-        }
-        .experience-item:hover {
-            transform: scale(1.05); /* "Pop out" effect on hover */
-            box-shadow: 0 20px 25px -5px rgba(4,103,151,0.3), 0 10px 10px -5px rgba(0,0,0,0.2); /* Enhanced shadow */
-            z-index: 20; /* Ensure hovered item is on top */
-        }
-
-        .experience-item .plane-icon {
-            position: absolute;
-            top: -25px;
-            width: 50px;
-            height: 50px;
             border-radius: 50%;
-            background-color: #38bdf8;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 4px solid #111827;
-            color: #111827;
-            font-size: 1.5rem;
-        }
-        /* Positioning for each item on the curve - Adjusted for spacing */
-        #exp-item-1 { top: 1%; left: 5%; }
-        #exp-item-1 .plane-icon { left: calc(100% - 25px); }
-
-        #exp-item-2 { top: 25%; right: 5%; }
-        #exp-item-2 .plane-icon { right: calc(100% - 25px); }
-
-        #exp-item-3 { top: 50%; left: 5%; }
-        #exp-item-3 .plane-icon { left: calc(100% - 25px); }
-
-        #exp-item-4 { top: 75%; right: 5%; }
-        #exp-item-4 .plane-icon { right: calc(100% - 25px); }
-
-        /* Responsive adjustments for the roadmap */
-        @media (max-width: 767px) {
-            .curved-roadmap-path {
-                display: none; /* Hide the curve on mobile */
-            }
-            .curved-roadmap-container {
-                min-height: auto; /* Reset height */
-            }
-            .experience-item {
-                position: relative; /* Stack them vertically */
-                width: 100%;
-                left: auto !important;
-                right: auto !important;
-                top: auto !important;
-                margin-bottom: 4rem; /* Add space between items */
-            }
-            .experience-item .plane-icon {
-                left: 50%;
-                transform: translateX(-50%);
-            }
+            filter: blur(80px);
+            opacity: 0.4;
+            z-index: -1;
+            animation: float 10s infinite alternate;
         }
 
-        /* Fade-in animation on scroll */
-        .fade-in-section {
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(30px, 50px); }
+        }
+
+        /* Scroll Reveal Animation Classes */
+        .reveal {
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
         }
-        .fade-in-section.is-visible {
+
+        .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
+        
+        /* 360-Degree Click Animation CSS */
+        @keyframes spin-360 {
+            0% { transform: perspective(1000px) rotateY(0deg); }
+            100% { transform: perspective(1000px) rotateY(360deg); }
+        }
 
-        /* Photo booth styles */
-        .photo-booth-img {
-            background-color: white;
-            border: 10px solid white;
-            border-bottom-width: 45px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            transform: rotate(-2deg);
-            transition: transform 0.3s ease;
+        .animate-spin-once {
+            animation: spin-360 1s ease-out forwards; 
         }
-        .photo-booth-img:hover {
-            transform: rotate(2deg) scale(1.05);
+
+        #certifications .glass {
+            transform-style: preserve-3d;
+            cursor: pointer;
         }
-        .photo-booth-img:nth-child(2) { transform: rotate(5deg); }
-        .photo-booth-img:nth-child(2):hover { transform: rotate(-3deg) scale(1.05); }
-        .photo-booth-img:nth-child(3) { transform: rotate(-5deg); }
-        .photo-booth-img:nth-child(3):hover { transform: rotate(3deg) scale(1.05); }
+
+        /* Project Cards & Modal Styles */
+        .project-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(34, 211, 238, 0.5);
+        }
+        
+        #project-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .cloud-content {
+            background: rgba(30, 41, 59, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 20px rgba(34, 211, 238, 0.2);
+            max-width: 700px;
+            width: 100%;
+            border-radius: 24px;
+            transform: scale(0.9);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        #project-modal.active { 
+            display: flex; 
+        }
+        
+        #project-modal.active .cloud-content {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155; 
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #06b6d4; 
+        }
+
+        /* Scooter Animation */
+        @keyframes scooter-ride {
+            0% {
+                offset-distance: 0%;
+            }
+            100% {
+                offset-distance: 100%;
+            }
+        }
+
+        .scooter-container {
+            offset-path: path('M 50 800 Q 150 650, 50 500 Q -50 350, 50 200 Q 150 50, 50 -100');
+            animation: scooter-ride 20s linear infinite;
+        }
     </style>
 </head>
-<body class="antialiased">
+<body class="antialiased relative text-lg">
 
-    <header class="fixed top-0 left-0 right-0 bg-gray-900/80 backdrop-blur-sm z-50">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-white">Sareena Philip</a>
-            <nav class="hidden md:flex space-x-8">
-                <a href="#summary" class="text-gray-300 hover:text-sky-400 transition">About</a>
-                <a href="#skills" class="text-gray-300 hover:text-sky-400 transition">Skills</a>
-                <a href="#experience" class="text-gray-300 hover:text-sky-400 transition">Experience</a>
-                <a href="#projects" class="text-gray-300 hover:text-sky-400 transition">Projects</a>
-                <a href="#education" class="text-gray-300 hover:text-sky-400 transition">Education</a>
-                <a href="#contact" class="text-gray-300 hover:text-sky-400 transition">Contact</a>
-            </nav>
+    <div class="blob bg-cyan-500 w-96 h-96 top-0 left-0"></div>
+    <div class="blob bg-violet-600 w-96 h-96 bottom-0 right-0"></div>
+    <div class="blob bg-blue-500 w-64 h-64 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
+
+    <nav class="fixed w-full z-50 glass transition-all duration-300 top-0">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <a href="#" class="text-3xl font-bold tracking-tighter text-white">SP<span class="text-cyan-400">.</span></a>
+            <div class="hidden md:flex space-x-10 text-base font-medium tracking-wide">
+                <a href="#About" class="hover:text-cyan-400 transition-colors">About</a>
+                <a href="#experience" class="hover:text-cyan-400 transition-colors">Experience</a>
+                <a href="#certifications" class="hover:text-cyan-400 transition-colors">Certifications</a>
+                <a href="#education" class="hover:text-cyan-400 transition-colors">Education</a>
+                <a href="#skills" class="hover:text-cyan-400 transition-colors">Skills</a>
+                <a href="#contact" class="px-6 py-2 rounded-full border border-cyan-500 text-cyan-400 hover:bg-cyan-500 hover:text-white transition-all">Contact</a>
+            </div>
         </div>
-    </header>
+    </nav>
 
-    <main class="pt-24">
-
-        <section class="min-h-screen flex items-center justify-center text-center px-6">
-            <div class="max-w-4xl mx-auto">
-                <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4">
-                    From a passion for process to a career in project management.
-                </h1>
-                <p class="text-lg md:text-xl text-gray-300 mb-8">
-                    Every great achievement begins with a single step. Mine started with a fascination for turning complex challenges into streamlined successes.
-                </p>
-                <a href="#summary" class="animated-button inline-block text-white font-bold py-3 px-8 border-2 border-white rounded-full text-lg">
-                    Step Into My Journey
+    <section class="h-screen flex flex-col justify-center items-center text-center px-4 relative overflow-hidden">
+        <div class="reveal active">
+            <p class="text-cyan-400 tracking-[0.2em] text-base md:text-lg uppercase mb-6 font-semibold">PMP • CAPM • CSM</p>
+            <h1 class="text-6xl md:text-9xl font-bold mb-8 text-white leading-tight">
+                Sareena <span class="text-gradient">Philip</span>
+            </h1>
+            <div class="h-10 md:h-16 mb-10">
+                <span id="typewriter" class="text-2xl md:text-4xl text-slate-200 border-r-4 border-cyan-400 pr-3"></span>
+            </div>
+            
+            <div class="flex gap-6 justify-center mt-10">
+                <a href="#experience" class="px-10 py-4 bg-cyan-600 text-white rounded-full text-lg font-semibold hover:bg-cyan-500 transition-all hover:scale-105 shadow-lg shadow-cyan-500/20">
+                    View Work
+                </a>
+                <a href="#contact" class="px-10 py-4 glass rounded-full text-lg font-semibold hover:bg-white/10 transition-all">
+                    Contact Me
                 </a>
             </div>
-        </section>
-
-        <section id="summary" class="py-20 md:py-32 fade-in-section">
-            <div class="container mx-auto px-6">
-                <div class="grid md:grid-cols-3 gap-12 items-center">
-                    <div class="md:col-span-2">
-                        <h2 class="text-3xl md:text-4xl font-bold mb-4"><span class="gradient-text">About Me</span></h2>
-                        <p class="text-gray-300 text-lg mb-4">
-                            A Certified Technical Business Analyst and Scrum Master with 3+ years of experience bridging business requirements and technical solutions across IT, ERP systems, and data analytics. I have a proven expertise in coordinating cross-functional teams, refining project intake processes, analyzing project health data, and supporting tool adoption (Jira, Power BI, SharePoint) to enhance portfolio visibility.
-                        </p>
-                        <p class="text-gray-300 text-lg">
-                            I am passionate about leading teams to untangle complex problems, optimize processes, and deliver projects that not only meet but exceed expectations. My goal is to create value and drive growth by transforming ambitious ideas into tangible results.
-                        </p>
-                    </div>
-                    <div>
-                        <img src="https://i.ibb.co/4n8hbCQ4/Whats-App-Image-2025-07-07-at-9-47-08-PM.jpg" alt="Sareena Philip" class="rounded-full shadow-2xl mx-auto w-64 h-64 md:w-80 md:h-80 object-cover border-4 border-gray-700">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="skills" class="py-20 md:py-32 bg-gray-900 fade-in-section">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-12"><span class="gradient-text">My Toolkit</span></h2>
-                <div class="grid md:grid-cols-2 gap-12">
-                    <div>
-                        <h3 class="text-2xl font-semibold text-sky-400 mb-6">Tools & Technologies</h3>
-                        <div class="flex flex-wrap justify-center gap-3">
-                            <span class="skill-tag bg-gray-700 text-white py-2 px-4 rounded-full">Jira</span>
-                            <span class="skill-tag bg-gray-700 text-white py-2 px-4 rounded-full">Confluence</span>
-                            <span class="skill-tag bg-gray-700 text-white py-2 px-4 rounded-full">Power BI</span>
-                            <span class="skill-tag bg-gray-700 text-white py-2 px-4 rounded-full">SharePoint</span>
-                            <span class="skill-tag bg-gray-700 text-white py-2 px-4 rounded-full">MS Project</span>
-                            <span class="skill-tag bg-gray-700 text-white py-2 px-4 rounded-full">SQL</span>
-                            <span class="skill-tag bg-gray-700 text-white py-2 px-4 rounded-full">SourceTree</span>
-                            <span class="skill-tag bg-gray-700 text-white py-2 px-4 rounded-full">GitHub</span>
-                            <span class="skill-tag bg-gray-700 text-white py-2 px-4 rounded-full">Insight ERP</span>
-                            <span class="skill-tag bg-gray-700 text-white py-2 px-4 rounded-full">Smartsheet</span>
-                             <span class="skill-tag bg-gray-700 text-white py-2 px-4 rounded-full">Visio</span>
-                        </div>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-semibold text-sky-400 mb-6">Project & Process Management</h3>
-                        <div class="flex flex-wrap justify-center gap-3">
-                            <span class="skill-tag bg-gray-700 text-white py-2 px-4 rounded-full">Agile</span>
-                            <span class="skill-tag bg-gray-700 text-white py-2 px-4 rounded-full">Scrum</span>
-                             <span class="skill-tag bg-gray-700 text-white py-2 px-4 rounded-full">Waterfall</span>
-                            <span class="skill-tag bg-gray-700 text-white py-2 px-4 rounded-full">PMO Governance</span>
-                            <span class="skill-tag bg-gray-700 text-white py-2 px-4 rounded-full">Project Intake</span>
-                            <span class="skill-tag bg-gray-700 text-white py-2 px-4 rounded-full">Risk Management</span>
-                            <span class="skill-tag bg-gray-700 text-white py-2 px-4 rounded-full">Continuous Improvement</span>
-                            <span class="skill-tag bg-gray-700 text-white py-2 px-4 rounded-full">Stakeholder Management</span>
-                            <span class="skill-tag bg-gray-700 text-white py-2 px-4 rounded-full">Technical Documentation</span>
-                            <span class="skill-tag bg-gray-700 text-white py-2 px-4 rounded-full">Data Visualization</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="experience" class="py-20 md:py-32 fade-in-section">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-20"><span class="gradient-text">My Career Journey</span></h2>
-                <div class="curved-roadmap-container">
-                    <svg class="curved-roadmap-path hidden md:block" viewBox="0 0 500 1700" preserveAspectRatio="none">
-                        <path d="M 250 85 Q 50 425, 250 850 T 450 1600" stroke="#374151" stroke-width="4" fill="none" stroke-dasharray="10,10"/>
-                    </svg>
-                    
-                    <div id="exp-item-1" class="experience-item">
-                        <div class="plane-icon"><i class="fa-solid fa-plane-departure"></i></div>
-                        <p class="text-sm text-sky-400 font-semibold">JULY 2024 - PRESENT</p>
-                        <h3 class="text-xl font-bold text-white mt-1">Application Analyst | Scrum Master</h3>
-                        <p class="text-md text-gray-400 mb-4">Wisenbaker Builder Services, Houston, TX</p>
-                        <ul class="space-y-2 text-left text-gray-300">
-                            <li class="flex items-start"><i class="fa-solid fa-check text-sky-400 mt-1 mr-2"></i><span>Created 10+ Power BI dashboards integrated with 2020 Insight ERP and SQL Database to visualize real-time metrics, enabling data-driven decisiocn-making and reducing reporting time by 30%.</span></li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-sky-400 mt-1 mr-2"></i><span>Engineered end-to-end data pipeline solutions using SQL queries, SP, and ETL processes to extract, transform, and load data from multiple sources, improving data accuracy by 25% and enabling automated reporting workflows.</span></li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-sky-400 mt-1 mr-2"></i><span>Implemented Agile methodology transformation using Jira workflows and process automation, reducing project lead time by 20% while conducting data integrity with revamped SQL scripts for real-time project health monitoring.</span></li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-sky-400 mt-1 mr-2"></i><span>Managed vendor relationships and project scoping initiatives, working closely with external vendors to develop technical specifications and deliver spec book that improved cross-functional team productivity by 40%.</span></li>
-                        </ul>
-                    </div>
-                    
-                    <div id="exp-item-2" class="experience-item text-right">
-                        <div class="plane-icon"><i class="fa-solid fa-plane"></i></div>
-                        <p class="text-sm text-sky-400 font-semibold">MAY 2023 - AUG 2023</p>
-                        <h3 class="text-xl font-bold text-white mt-1">Technical Project Coordinator</h3>
-                        <p class="text-md text-gray-400 mb-4">Catalent Pharma Solutions, Somerset, NJ</p>
-                        <ul class="space-y-2 text-left text-gray-300">
-                              <li class="flex items-start"><i class="fa-solid fa-check text-sky-400 mt-1 mr-2"></i><span>Designed and developed SharePoint-based business intelligence portal using Power Platform and guided workflows, improving cross-departmental data traceability and enhancing CAPEX forecasting accuracy by 20%.</span></li>
-                              <li class="flex items-start"><i class="fa-solid fa-check text-sky-400 mt-1 mr-2"></i><span>Designed and launched comprehensive SharePoint site for cross-departmental documentation and knowledge management, implementing custom workflows, document libraries, and controlled approval processes that enhanced collaboration.</span></li>
-                              <li class="flex items-start"><i class="fa-solid fa-check text-sky-400 mt-1 mr-2"></i><span>Collaborated with development teams using GitHub, SourceTree, and Bitbucket for source code management, coordinating code repositories, version control, and deployment workflows to ensure seamless integration of data.</span></li>
-                             <li class="flex items-start"><i class="fa-solid fa-check text-sky-400 mt-1 mr-2"></i><span>Streamlined Voice of Customer (VoC) feedback system using SharePoint workflows, and custom integrations, reducing interdepartmental communication lag by 25% and improving project visibility across multiple departments.</span></li>
-                       </ul>
-                   </div>
-
-                    <div id="exp-item-3" class="experience-item">
-                        <div class="plane-icon"><i class="fa-solid fa-plane"></i></div>
-                        <p class="text-sm text-sky-400 font-semibold">SEPT 2022 - MAY 2024</p>
-                        <h3 class="text-xl font-bold text-white mt-1">Graduate Program Coordinator</h3>
-                        <p class="text-md text-gray-400 mb-4">Illinois Institute of Technology, Chicago, IL</p>
-                        <ul class="space-y-2 text-left text-gray-300">
-                            <li class="flex items-start"><i class="fa-solid fa-check text-sky-400 mt-1 mr-2"></i><span>Developed and delivered Salesforce CRM training to a 15-member team, reducing ticket resolution time and enhancing user engagement workflows.</span></li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-sky-400 mt-1 mr-2"></i><span>Synthesized VOC feedback to optimize data tracking processes, streamlining documentation workflows and reducing response lag by 30%.</span></li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-sky-400 mt-1 mr-2"></i><span>Supported reporting and documentation of cross-campus exchange initiatives and collaborated with tech and admissions teams to update web assets and internal SharePoint content.</span></li>
-                        </ul>
-                    </div>
-                    
-                    <div id="exp-item-4" class="experience-item text-right">
-                        <div class="plane-icon"><i class="fa-solid fa-plane-arrival"></i></div>
-                        <p class="text-sm text-sky-400 font-semibold">JUN 2021 - JUL 2022</p>
-                        <h3 class="text-xl font-bold text-white mt-1">Application Analyst</h3>
-                        <p class="text-md text-gray-400 mb-4">Decimal Technologies, Gurugram, India</p>
-                          <ul class="space-y-2 text-left text-gray-300">
-                            <li class="flex items-start"><i class="fa-solid fa-check text-sky-400 mt-1 mr-2"></i><span>Developed mobile and web applications for banking sector clients using Vahana low-code platform and REST APIs, delivering scalable financial software solutions with secure transaction processing capabilities and rapid application development.</span></li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-sky-400 mt-1 mr-2"></i><span>Collaborated with business stakeholders to gather requirements and translate complex banking business logic into technical specifications, ensuring compliance with financial regulations and security standards.</span></li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-sky-400 mt-1 mr-2"></i><span>Managed Agile development lifecycle using Jira for 7+ development teams, leading sprint planning, user story creation, and backlog refinement while maintaining code quality and delivery timelines.</span></li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-sky-400 mt-1 mr-2"></i><span>Proposed API integrations and database solutions for banking applications, designing secure data models and optimizing database performance for high-volume financial transactions.</span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects" class="py-20 md:py-32 bg-gray-900 fade-in-section">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12"><span class="gradient-text">Featured Projects</span></h2>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="bg-gray-800 p-8 rounded-lg shadow-lg flex flex-col">
-                        <h3 class="text-2xl font-bold text-sky-400">Agile Transformation & Jira Automation</h3>
-                        <p class="text-md text-gray-400 mb-4">Wisenbaker Builder Services</p>
-                        <p class="text-gray-300 flex-grow">Led a strategic initiative to implement Agile methodologies (Scrum/Kanban) and automated Jira workflows. This project enhanced team collaboration, accountability, and delivery speed, resulting in a 20% reduction in project lead times and a significant decrease in implementation defects.</p>
-                    </div>
-                    <div class="bg-gray-800 p-8 rounded-lg shadow-lg flex flex-col">
-                        <h3 class="text-2xl font-bold text-sky-400">Manufacturing BI & Data Pipeline</h3>
-                        <p class="text-md text-gray-400 mb-4">Wisenbaker Builder Services</p>
-                        <p class="text-gray-300 flex-grow">Engineered and deployed an end-to-end data solution, including ETL processes and over 10 interactive Power BI dashboards. This system provided real-time production metrics from the Insight ERP, empowering data-driven decisions on the manufacturing floor and cutting reporting time by 30%.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="volunteer" class="py-20 md:py-32 fade-in-section">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12"><span class="gradient-text">Volunteer & Leadership</span></h2>
-                <div class="max-w-3xl mx-auto bg-gray-800 p-8 rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-bold text-sky-400">Knowledge Sharing Technical Manager</h3>
-                    <p class="text-md text-gray-400 mb-4">PMI | Mar 2024 – Dec 2024</p>
-                    <ul class="space-y-2 text-left text-gray-300">
-                        <li class="flex items-start"><i class="fa-solid fa-check text-sky-400 mt-1 mr-2"></i><span>Led technical knowledge-sharing initiatives to define and optimize project management workflows for the PMI community, enhancing member engagement and resource accessibility.</span></li>
-                        <li class="flex items-start"><i class="fa-solid fa-check text-sky-400 mt-1 mr-2"></i><span>Coordinated and facilitated cross-industry collaboration sessions and webinars with 50–60 participants, fostering a community of continuous learning and professional development.</span></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="education" class="py-20 md:py-32 bg-gray-900 fade-in-section">
-            <div class="container mx-auto px-6">
-                <div class="grid md:grid-cols-2 gap-16">
-                    <div class="text-center md:text-left">
-                        <h2 class="text-3xl md:text-4xl font-bold mb-8"><span class="gradient-text">Education</span></h2>
-                        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                            <h3 class="text-xl font-bold text-white">Masters in Management Information Systems</h3>
-                            <p class="text-sky-400">Illinois Institute of Technology</p>
-                            <p class="text-gray-400 text-sm">2022 - 2024</p>
-                        </div>
-                        <div class="bg-gray-800 p-6 rounded-lg shadow-lg mt-6">
-                            <h3 class="text-xl font-bold text-white">Bachelors in Computer Science</h3>
-                            <p class="text-sky-400">Guru Gobind Singh Indraprastha University</p>
-                            <p class="text-gray-400 text-sm">2018 - 2021</p>
-                        </div>
-                    </div>
-                    <div class="text-center md:text-left">
-                        <h2 class="text-3xl md:text-4xl font-bold mb-8"><span class="gradient-text">Certifications</span></h2>
-                        <div class="grid grid-cols-2 gap-4">
-                            <button onclick="window.open('https://drive.google.com/file/d/1k8xAkD09GsfxFKwVbAlq1-rPVWv0mMQY/view?usp=sharing', '_blank')">
-                                <div class="bg-gray-800 p-4 rounded-lg text-center shadow-lg">
-                                    <p class="font-bold text-white">PMP</p>
-                                    <p class="text-xs text-sky-400">Project Management Professional</p>
-                                </div>
-                            </button>
-                            <button onclick="window.open('https://drive.google.com/file/d/1MI6mj5JhmNGWHiR6j9JHzUTMMZLPY3Cj/view?usp=sharing', '_blank')">
-                                <div class="bg-gray-800 p-4 rounded-lg text-center shadow-lg">
-                                    <p class="font-bold text-white">CAPM</p>
-                                    <p class="text-xs text-sky-400">Certified Associate in Project Management</p>
-                                </div>
-                            </button>
-                            <button onclick="window.open('https://drive.google.com/file/d/1fUAvAfriFjPZR5ubDS1H8W_T76CTmQuC/view?usp=sharing', '_blank')">
-                                <div class="bg-gray-800 p-4 rounded-lg text-center shadow-lg">
-                                    <p class="font-bold text-white">CSM</p>
-                                    <p class="text-xs text-sky-400">Certified ScrumMaster</p>
-                                </div>
-                            </button>
-                            <button onclick="window.open('https://drive.google.com/file/d/1qH_GsRWmUpRQpHCyXTRf72mlYCTDxBMT/view?usp=sharing', '_blank')">
-                                <div class="bg-gray-800 p-4 rounded-lg text-center shadow-lg">
-                                    <p class="font-bold text-white">Google PM</p>
-                                    <p class="text-xs text-sky-400">Google Project Management</p>
-                                </div>
-                            </button>
-                            <button onclick="window.open('https://drive.google.com/file/d/164Y0GNla0psIeDiQC-06v579dzjBGipD/view?usp=sharing', '_blank')">
-                                <div class="bg-gray-800 p-4 rounded-lg text-center shadow-lg">
-                                    <p class="font-bold text-white">Six Sigma</p>
-                                    <p class="text-xs text-sky-400">White Belt Certified</p>
-                                </div>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        </div>
         
-        <section id="events" class="py-20 md:py-32 fade-in-section">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4"><span class="gradient-text">Event Highlights</span></h2>
-                <p class="text-gray-400 mb-12 max-w-2xl mx-auto">A few snapshots from conferences, workshops, and team events I've been a part of.</p>
-                <div class="flex flex-wrap justify-center items-center gap-8">
-                    <div class="photo-booth-img">
-                        <img src="https://i.ibb.co/GfBHhgpD/Screenshot-2025-07-08-203500.png" alt="Event photo 1" style="width:250px;height:250px;object-fit:cover;">
+        <div class="absolute bottom-12 animate-bounce">
+            <i class="fas fa-chevron-down text-cyan-400 text-2xl"></i>
+        </div>
+    </section>
+
+    <section id="about" class="py-28 px-6 max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+            <div class="reveal relative">
+                <div class="absolute -inset-2 bg-gradient-to-r from-cyan-400 to-violet-600 rounded-2xl opacity-30 blur-lg"></div>
+                <div class="relative glass rounded-2xl h-[450px] w-full overflow-hidden group">
+                    <img src="https://i.ibb.co/B2LTFz5W/Whats-App-Image-2025-12-28-at-7-19-38-PM.jpg" alt="Sareena Philip - Technical Project Manager" class="w-full h-full object-cover rounded-2xl transition-transform duration-500 group-hover:scale-105">
+                </div>
+            </div>
+            
+            <div class="reveal delay-200">
+                <h2 class="text-5xl font-bold mb-8">About Me</h2>
+                <div class="w-24 h-1.5 bg-cyan-500 mb-10"></div>
+                <p class="text-xl text-slate-300 leading-relaxed mb-8">
+                    I am a PMP-certified Technical Project Manager and Business Analyst with over 4 years of experience delivering data-driven solutions across manufacturing, SaaS, fintech, and academia.
+                </p>
+                <p class="text-xl text-slate-300 leading-relaxed mb-8">
+                    I specialize in translating business needs into technical requirements, developing SQL-based dashboards, and collaborating with data engineers to accelerate decision-making.
+                </p>
+                
+                <div class="grid grid-cols-2 gap-6 mt-10">
+                    <div class="p-6 glass rounded-xl border-l-4 border-cyan-400">
+                        <h4 class="font-bold text-white text-lg">Project Management</h4>
+                        <p class="text-base text-slate-400 mt-2">PMP, CAPM, CSM Certified</p>
                     </div>
-                    <div class="photo-booth-img">
-                        <img src="https://i.ibb.co/5xknv5yL/Screenshot-2025-07-08-204055.png" alt="Event photo 2" style="width:250px;height:250px;object-fit:cover;">
-                    </div>
-                    <div class="photo-booth-img">
-                        <img src="https://i.ibb.co/B2b6b5Bm/Screenshot-2025-07-08-204127.png" alt="Event photo 3" style="width:250px;height:250px;object-fit:cover;">
-                    </div>
-                     <div class="photo-booth-img">
-                        <img src="https://i.ibb.co/B2QKvhyk/Screenshot-2025-07-08-213854.png" alt="Event photo 4" style="width:250px;height:250px;object-fit:cover;">
+                    <div class="p-6 glass rounded-xl border-l-4 border-violet-500">
+                        <h4 class="font-bold text-white text-lg">Core Expertise</h4>
+                        <p class="text-base text-slate-400 mt-2">SQL, Data Modeling, Agile/Hybrid</p>
                     </div>
                 </div>
             </div>
-        </section>
-
-    </main>
-
-    <footer id="contact" class="bg-gray-900 border-t border-gray-700">
-        <div class="container mx-auto px-6 py-12 text-center">
-            <h2 class="text-3xl font-bold text-white mb-4">Let's Connect</h2>
-            <p class="text-gray-400 mb-8 max-w-xl mx-auto">I'm always open to discussing new projects, creative ideas, or opportunities to be part of an ambitious team. Feel free to reach out.</p>
-            <div class="flex justify-center items-center space-x-8 text-3xl">
-                <a href="mailto:sareenaphilip15@gmail.com" class="text-gray-400 hover:text-sky-400 transition" aria-label="Email">
-                    <i class="fas fa-envelope"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/sareena-philip" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-sky-400 transition" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-            </div>
-            <p class="text-gray-500 mt-12 text-sm">&copy; 2025 Sareena Philip. All Rights Reserved.</p>
         </div>
-    </footer>
+    </section>
+
+    <section id="experience" class="py-28 px-6 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20 reveal">
+                <h2 class="text-5xl font-bold mb-6">Professional Experience</h2>
+                <p class="text-xl text-slate-400">A timeline of my technical leadership and analytical roles.</p>
+            </div>
+
+            <div class="space-y-12 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-600 before:to-transparent">
+                
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group reveal">
+                    <div class="flex items-center justify-center w-12 h-12 rounded-full border border-cyan-500 bg-slate-900 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                        <i class="fas fa-briefcase text-cyan-400 text-base"></i>
+                    </div>
+                    <div class="w-[calc(100%-5rem)] md:w-[calc(50%-3rem)] glass p-8 rounded-2xl hover:scale-[1.01] transition-transform duration-300">
+                        <div class="flex flex-col md:flex-row justify-between items-start mb-4 gap-2">
+                            <h3 class="font-bold text-2xl text-white">Technical Project Manager</h3>
+                            <span class="text-sm bg-cyan-900/50 text-cyan-300 px-3 py-1 rounded font-mono">July 2024 - Present</span>
+                        </div>
+                        <h4 class="text-cyan-400 text-lg mb-4 font-semibold">Wisenbaker Builder Services</h4>
+                        <ul class="text-lg text-slate-300 space-y-3 list-disc list-inside">
+                            <li>Delivered 90% production efficiency improvement by re-engineering the Gold Ticket asset-tracking process—conducting requirements analysis, mapping AS-IS/TO-BE workflows, and defining data logic for manufacturing floor operations</li>
+                            <li>Achieved $30K in monthly savings through end-to-end RFID tracking project implementation; coordinated with vendors, validated data flows, and integrated SQL processes for real-time inventory optimization</li>
+                            <li>Lead data-driven initiatives for Dealer Web Portal (greenfield B2B application), defining project scope, modeling workflows, and building SQL-based KPIs and dashboards to support dealer onboarding and operational visibility</li>
+                            <li>Develop and maintain operational dashboards using SQL and SSRS for cross-functional teams; perform data cleaning, transformation, and anomaly detection while training 3+ junior analysts on SQL best practices</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group reveal">
+                    <div class="flex items-center justify-center w-12 h-12 rounded-full border border-violet-500 bg-slate-900 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                        <i class="fas fa-flask text-violet-400 text-base"></i>
+                    </div>
+                    <div class="w-[calc(100%-5rem)] md:w-[calc(50%-3rem)] glass p-8 rounded-2xl hover:scale-[1.01] transition-transform duration-300">
+                        <div class="flex flex-col md:flex-row justify-between items-start mb-4 gap-2">
+                            <h3 class="font-bold text-2xl text-white">Technical Project Coordinator Intern</h3>
+                            <span class="text-sm bg-violet-900/50 text-violet-300 px-3 py-1 rounded font-mono">May 2023 - Aug 2023</span>
+                        </div>
+                        <h4 class="text-violet-400 text-lg mb-4 font-semibold">Catalent Pharma Solutions</h4>
+                        <ul class="text-lg text-slate-300 space-y-3 list-disc list-inside">
+                            <li>Reduced project approval time by 60% by consolidating 5+ SharePoint repositories into a unified analytics platform with automated reporting—streamlining workflows across PMO, engineering, and quality teams</li>
+                            <li>Analyzed workflows across 3 manufacturing units using Visio and SQL-backed process documentation, identifying 12+ bottlenecks and data inconsistencies that informed process redesign</li>
+                            <li>Built process optimization models and performance dashboards tracking 15+ KPIs, enabling real-time visibility into CAPEX forecasting and budget planning</li>
+                            <li>Partnered with cross-functional teams to implement data-informed process enhancements, conducting root cause analysis and delivering actionable recommendations that reduced approval cycle time</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group reveal">
+                    <div class="flex items-center justify-center w-12 h-12 rounded-full border border-cyan-500 bg-slate-900 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                        <i class="fas fa-university text-cyan-400 text-base"></i>
+                    </div>
+                    <div class="w-[calc(100%-5rem)] md:w-[calc(50%-3rem)] glass p-8 rounded-2xl hover:scale-[1.01] transition-transform duration-300">
+                        <div class="flex flex-col md:flex-row justify-between items-start mb-4 gap-2">
+                            <h3 class="font-bold text-2xl text-white">Operations Project Manager (GA)</h3>
+                            <span class="text-sm bg-cyan-900/50 text-cyan-300 px-3 py-1 rounded font-mono">Sep 2022 - May 2024</span>
+                        </div>
+                        <h4 class="text-cyan-400 text-lg mb-4 font-semibold">Illinois Institute of Technology</h4>
+                        <ul class="text-lg text-slate-300 space-y-3 list-disc list-inside">
+                            <li>Maintained 99% data accuracy across large-scale Salesforce CRM operations handling 60+ daily stakeholder interactions; ensured timely issue resolution and data integrity for university-wide programs</li>
+                            <li>Reduced operational errors by 25% by delivering targeted training programs for 15 staff members, identifying skill gaps through performance analytics and implementing standardized procedures</li>
+                            <li>Built comprehensive KPI monitoring system tracking program participation, staff performance, and student engagement metrics—providing actionable dashboards for university leadership strategic planning</li>
+                            <li>Conducted statistical analysis on Student Exchange program operations, analyzing enrollment trends, completion rates, and resource allocation to optimize program efficiency and inform policy decisions</li>
+                            <li>Designed performance measurement framework with structured process documentation, improving operational transparency and cross-departmental workflow alignment</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group reveal">
+                    <div class="flex items-center justify-center w-12 h-12 rounded-full border border-violet-500 bg-slate-900 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                        <i class="fas fa-chart-line text-violet-400 text-base"></i>
+                    </div>
+                    <div class="w-[calc(100%-5rem)] md:w-[calc(50%-3rem)] glass p-8 rounded-2xl hover:scale-[1.01] transition-transform duration-300">
+                        <div class="flex flex-col md:flex-row justify-between items-start mb-4 gap-2">
+                            <h3 class="font-bold text-2xl text-white">Application Analyst</h3>
+                            <span class="text-sm bg-violet-900/50 text-violet-300 px-3 py-1 rounded font-mono">Jun 2020 - Jul 2021</span>
+                        </div>
+                        <h4 class="text-violet-400 text-lg mb-4 font-semibold">Decimal Technologies</h4>
+                        <ul class="text-lg text-slate-300 space-y-3 list-disc list-inside">
+                            <li>Conducted user analytics for mobile banking app serving 1M+ users, performing funnel analysis, cohort segmentation, and predictive modeling to identify optimization opportunities that informed product roadmap decisions</li>
+                            <li>Reduced product backlog by 20% by partnering with product stakeholders to analyze feature performance, conduct ROI analysis, and implement data-driven prioritization frameworks</li>
+                            <li>Led 7-member Agile analytics team to 95% on-time delivery while implementing cross-functional dashboards and reporting capabilities that improved data accuracy and stakeholder visibility</li>
+                            <li>Cut stakeholder query resolution time by 30% by establishing analytics documentation standards, KPI frameworks, and self-service reporting tools that improved data transparency</li>
+                            <li>Designed and maintained advanced data models for core B2B SaaS banking platform using SQL, ensuring data continuity and system integrity during operational transitions and platform migrations</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="reveal">
+            <h2 class="text-4xl font-bold mb-12 text-center flex items-center justify-center gap-4">
+                <i class="fas fa-hand-holding-heart text-emerald-400"></i> Community & Leadership
+            </h2>
+            
+            <div class="glass p-10 rounded-3xl border-l-8 border-emerald-500 hover:scale-[1.01] transition-transform relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-80 h-80 bg-emerald-500/5 rounded-full blur-3xl -z-10"></div>
+
+                <div class="flex flex-col md:flex-row justify-between md:items-start mb-8">
+                    <div>
+                        <h3 class="text-3xl font-bold text-white">Knowledge Sharing Technical Project Manager</h3>
+                        <p class="text-emerald-400 font-medium text-xl">Project Management Institute (PMI)</p>
+                    </div>
+                    <div class="mt-4 md:mt-0">
+                        <span class="px-5 py-2 bg-emerald-500/10 text-emerald-300 rounded-full text-sm uppercase tracking-wider font-semibold border border-emerald-500/20">Volunteer</span>
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="col-span-2">
+                        <p class="text-slate-300 leading-relaxed text-xl">
+                            Actively contributing to the professional community by facilitating technical knowledge transfer sessions. I bridge the gap between theoretical project management frameworks and real-world technical execution, mentoring peers on Agile best practices and tool implementation.
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-center md:justify-end">
+                        <div class="text-center px-8 py-6 rounded-2xl bg-slate-800/50 border border-slate-700 w-full md:w-auto">
+                            <div class="text-4xl text-emerald-400 mb-2"><i class="fas fa-users"></i></div>
+                            <div class="text-base text-slate-400">Knowledge Sharing</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications" class="py-24 px-6 bg-slate-900/30">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-5xl font-bold mb-16 text-center reveal">Certifications</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 reveal">
+                <div class="glass p-6 rounded-xl text-center hover:border-cyan-400 transition-colors group">
+                    <i class="fas fa-certificate text-4xl text-cyan-400 mb-4 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-xl font-bold text-white">PMP®</h3>
+                    <p class="text-sm text-slate-400 mt-2">Project Management Professional</p>
+                </div>
+                
+                <div class="glass p-6 rounded-xl text-center hover:border-violet-400 transition-colors group">
+                    <i class="fas fa-award text-4xl text-violet-400 mb-4 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-xl font-bold text-white">CAPM®</h3>
+                    <p class="text-sm text-slate-400 mt-2">Certified Associate in Project Mgmt</p>
+                </div>
+                
+                <div class="glass p-6 rounded-xl text-center hover:border-emerald-400 transition-colors group">
+                    <i class="fas fa-user-cog text-4xl text-emerald-400 mb-4 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-xl font-bold text-white">CSM®</h3>
+                    <p class="text-sm text-slate-400 mt-2">Certified ScrumMaster</p>
+                </div>
+
+                <div class="glass p-6 rounded-xl text-center hover:border-orange-400 transition-colors group">
+                    <i class="fas fa-infinity text-4xl text-orange-400 mb-4 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-xl font-bold text-white">Lean Six Sigma</h3>
+                    <p class="text-sm text-slate-400 mt-2">White Belt Certification</p>
+                </div>
+
+                <div class="glass p-6 rounded-xl text-center hover:border-blue-400 transition-colors group">
+                    <i class="fab fa-google text-4xl text-blue-400 mb-4 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-xl font-bold text-white">Google</h3>
+                    <p class="text-sm text-slate-400 mt-2">Project Management</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="py-28 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-5xl font-bold mb-16 text-center text-white reveal"><i class="fas fa-graduation-cap text-cyan-400 mr-4"></i>Academic Foundation</h2>
+            
+            <div class="grid md:grid-cols-2 gap-10">
+                <div class="glass p-10 rounded-3xl border-l-8 border-cyan-500 hover:scale-[1.01] transition-transform duration-300 reveal">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-3xl font-bold text-white">Master of Science (M.S.)</h3>
+                        <span class="text-sm bg-cyan-900/50 text-cyan-300 px-3 py-1 rounded font-mono">Graduated: 05/2024</span>
+                    </div>
+                    <h4 class="text-xl text-cyan-400 font-semibold mb-4">Information Technology and Management</h4>
+                    <p class="text-lg text-slate-300 mb-2"><i class="fas fa-university mr-2"></i>Illinois Institute of Technology</p>
+                    <p class="text-base text-slate-400 ml-6">Chicago, IL</p>
+                </div>
+                
+                <div class="glass p-10 rounded-3xl border-l-8 border-violet-500 hover:scale-[1.01] transition-transform duration-300 reveal delay-100">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-3xl font-bold text-white">Bachelor of Science (B.S.)</h3>
+                        <span class="text-sm bg-violet-900/50 text-violet-300 px-3 py-1 rounded font-mono">Graduated: 06/2021</span>
+                    </div>
+                    <h4 class="text-xl text-violet-400 font-semibold mb-4">Computer Science</h4>
+                    <p class="text-lg text-slate-300 mb-2"><i class="fas fa-university mr-2"></i>Guru Gobind Singh Indraprastha University</p>
+                    <p class="text-base text-slate-400 ml-6">New Delhi, India</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-28 px-6 [perspective:1500px] bg-slate-950">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold text-white reveal mb-4">Impact by the Numbers</h2>
+                <p class="text-slate-400">Hover a card to see the project detail</p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-8">
+                
+                <div class="group h-[350px] [perspective:1500px] reveal">
+                    <div class="relative h-full w-full transition-all duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                        <div class="absolute inset-0 glass p-10 rounded-3xl text-center [backface-visibility:hidden] flex flex-col justify-center border border-white/10">
+                            <div class="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-4">
+                                <span class="counter" data-target="90">0</span>%
+                            </div>
+                            <h3 class="text-white font-semibold text-xl mb-2">Efficiency Boost</h3>
+                            <p class="text-base text-slate-400">Re-engineered Gold Ticket process</p>
+                        </div>
+                        <div class="absolute inset-0 glass p-10 rounded-3xl text-center [backface-visibility:hidden] [transform:rotateY(180deg)] flex flex-col justify-center items-center bg-slate-900 border border-cyan-500/30">
+                            <h4 class="text-cyan-400 font-bold mb-2">Process Detail</h4>
+                            <p class="text-white text-sm">Reduced manual touchpoints by 45% through automated logic gates.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group h-[350px] [perspective:1500px] reveal">
+                    <div class="relative h-full w-full transition-all duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                        <div class="absolute inset-0 glass p-10 rounded-3xl text-center [backface-visibility:hidden] flex flex-col justify-center border border-white/10">
+                            <div class="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-purple-500 mb-4">
+                                $<span class="counter" data-target="30">0</span>k
+                            </div>
+                            <h3 class="text-white font-semibold text-xl mb-2">Monthly Savings</h3>
+                            <p class="text-base text-slate-400">Real-time RFID inventory optimization</p>
+                        </div>
+                        <div class="absolute inset-0 glass p-10 rounded-3xl text-center [backface-visibility:hidden] [transform:rotateY(180deg)] flex flex-col justify-center items-center bg-slate-900 border border-violet-500/30">
+                            <h4 class="text-violet-400 font-bold mb-2">ROI Impact</h4>
+                            <p class="text-white text-sm">Eliminated inventory shrinkage and manual reconciliation labor.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group h-[350px] [perspective:1500px] reveal">
+                    <div class="relative h-full w-full transition-all duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                        <div class="absolute inset-0 glass p-10 rounded-3xl text-center [backface-visibility:hidden] flex flex-col justify-center border border-white/10">
+                            <div class="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400 mb-4">
+                                <span class="counter" data-target="60">0</span>%
+                            </div>
+                            <h3 class="text-white font-semibold text-xl mb-2">Faster Approvals</h3>
+                            <p class="text-base text-slate-400">Unified SharePoint analytics platform</p>
+                        </div>
+                        <div class="absolute inset-0 glass p-10 rounded-3xl text-center [backface-visibility:hidden] [transform:rotateY(180deg)] flex flex-col justify-center items-center bg-slate-900 border border-emerald-500/30">
+                            <h4 class="text-emerald-400 font-bold mb-2">Workflow Speed</h4>
+                            <p class="text-white text-sm">Centralized dashboard reduced approval lead times by 3 days per cycle.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group h-[350px] [perspective:1500px] reveal">
+                    <div class="relative h-full w-full transition-all duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                        <div class="absolute inset-0 glass p-10 rounded-3xl text-center [backface-visibility:hidden] flex flex-col justify-center border border-white/10">
+                            <div class="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400 mb-4">
+                                <span class="counter" data-target="99">0</span>%
+                            </div>
+                            <h3 class="text-white font-semibold text-xl mb-2">Data Accuracy</h3>
+                            <p class="text-base text-slate-400">Maintained in large-scale CRM operations</p>
+                        </div>
+                        <div class="absolute inset-0 glass p-10 rounded-3xl text-center [backface-visibility:hidden] [transform:rotateY(180deg)] flex flex-col justify-center items-center bg-slate-900 border border-orange-500/30">
+                            <h4 class="text-orange-400 font-bold mb-2">Data Integrity</h4>
+                            <p class="text-white text-sm">Successfully migrated 1.2M records with zero data loss or corruption.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="featured-projects" class="py-28 px-6 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold text-white mb-4 reveal">Featured Projects</h2>
+                <p class="text-slate-400 text-lg max-w-2xl mx-auto">Independent initiatives demonstrating change leadership and technical execution.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="project-card glass p-8 rounded-2xl border border-slate-800 reveal" onclick="openProject('agile')">
+                    <div class="text-cyan-400 mb-4"><i class="fas fa-sync-alt text-3xl"></i></div>
+                    <h3 class="text-xl font-bold text-white mb-2">Agile Transformation Initiative</h3>
+                    <p class="text-slate-400 text-sm mb-4">Wisenbaker Builder Services | 2024</p>
+                    <span class="text-cyan-400 text-sm font-semibold hover:underline">View Case Study →</span>
+                </div>
+                <div class="project-card glass p-8 rounded-2xl border border-slate-800 reveal delay-100" onclick="openProject('tablet')">
+                    <div class="text-violet-400 mb-4"><i class="fas fa-mobile-alt text-3xl"></i></div>
+                    <h3 class="text-xl font-bold text-white mb-2">Sauce & Spoon Kiosk Rollout</h3>
+                    <p class="text-slate-400 text-sm mb-4">Google Capstone | 2023</p>
+                    <span class="text-violet-400 text-sm font-semibold hover:underline">View Case Study →</span>
+                </div>
+                <div class="project-card glass p-8 rounded-2xl border border-slate-800 reveal delay-200" onclick="openProject('pmi')">
+                    <div class="text-emerald-400 mb-4"><i class="fas fa-users text-3xl"></i></div>
+                    <h3 class="text-xl font-bold text-white mb-2">PMI Technical Sessions</h3>
+                    <p class="text-slate-400 text-sm mb-4">Volunteer Speaker | 2024</p>
+                    <span class="text-emerald-400 text-sm font-semibold hover:underline">View Case Study →</span>
+                </div>
+            </div>
+        </div>
+        
+        <div id="project-modal" onclick="closeProject()">
+            <div class="cloud-content p-8 md:p-12 relative" onclick="event.stopPropagation()">
+                <button onclick="closeProject()" class="absolute top-6 right-6 text-slate-400 hover:text-white text-2xl transition-colors">&times;</button>
+                <div id="modal-body"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-28 px-6 bg-slate-900/30">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-5xl font-bold mb-16 text-center reveal">Technical Arsenal</h2>
+            
+            <div class="grid md:grid-cols-2 gap-10">
+                <div class="glass p-8 rounded-2xl reveal hover:border-cyan-500/50 transition-colors h-full">
+                    <div class="flex items-center gap-4 mb-6">
+                        <i class="fas fa-tasks text-cyan-400 text-3xl"></i>
+                        <h3 class="text-2xl font-bold text-white">Project Management</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 rounded-full bg-slate-800 border border-slate-700 text-base text-slate-300 hover:text-cyan-400 hover:border-cyan-400 transition-colors">Portfolio Management</span>
+                        <span class="px-4 py-2 rounded-full bg-slate-800 border border-slate-700 text-base text-slate-300 hover:text-cyan-400 hover:border-cyan-400 transition-colors">Multi-Disciplinary Team Leadership</span>
+                        <span class="px-4 py-2 rounded-full bg-slate-800 border border-slate-700 text-base text-slate-300 hover:text-cyan-400 hover:border-cyan-400 transition-colors">Strategic Program Delivery</span>
+                        <span class="px-4 py-2 rounded-full bg-slate-800 border border-slate-700 text-base text-slate-300 hover:text-cyan-400 hover:border-cyan-400 transition-colors">Resource Allocation</span>
+                        <span class="px-4 py-2 rounded-full bg-slate-800 border border-slate-700 text-base text-slate-300 hover:text-cyan-400 hover:border-cyan-400 transition-colors">Risk Assessment & Mitigation</span>
+                        <span class="px-4 py-2 rounded-full bg-slate-800 border border-slate-700 text-base text-slate-300 hover:text-cyan-400 hover:border-cyan-400 transition-colors">Change Management</span>
+                        <span class="px-4 py-2 rounded-full bg-slate-800 border border-slate-700 text-base text-slate-300 hover:text-cyan-400 hover:border-cyan-400 transition-colors">Cross-Functional Collaboration</span>
+                        <span class="px-4 py-2 rounded-full bg-slate-800 border border-slate-700 text-base text-slate-300 hover:text-cyan-400 hover:border-cyan-400 transition-colors">Stakeholder Management</span>
+                    </div>
+                </div>
+
+                <div class="glass p-8 rounded-2xl reveal delay-100 hover:border-violet-500/50 transition-colors h-full">
+                    <div class="flex items-center gap-4 mb-6">
+                        <i class="fas fa-chart-pie text-violet-400 text-3xl"></i>
+                        <h3 class="text-2xl font-bold text-white">Data & Analytics</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 rounded-full bg-slate-800 border border-slate-700 text-base text-slate-300 hover:text-violet-400 hover:border-violet-400 transition-colors">MS Excel (Advanced)</span>
+                        <span class="px-4 py-2 rounded-full bg-slate-800 border border-slate-700 text-base text-slate-300 hover:text-violet-400 hover:border-violet-400 transition-colors">SQL & Database Management</span>
+                        <span class="px-4 py-2 rounded-full bg-slate-800 border border-slate-700 text-base text-slate-300 hover:text-violet-400 hover:border-violet-400 transition-colors">SSRS</span>
+                        <span class="px-4 py-2 rounded-full bg-slate-800 border border-slate-700 text-base text-slate-300 hover:text-violet-400 hover:border-violet-400 transition-colors">Power BI</span>
+                        <span class="px-4 py-2 rounded-full bg-slate-800 border border-slate-700 text-base text-slate-300 hover:text-violet-400 hover:border-violet-400 transition-colors">KPI Development</span>
+                        <span class="px-4 py-2 rounded-full bg-slate-800 border border-slate-700 text-base text-slate-300 hover:text-violet-400 hover:border-violet-400 transition-colors">Performance Metrics Analysis</span>
+                    </div>
+                </div>
+
+                <div class="glass p-8 rounded-2xl reveal delay-200 hover:border-emerald-500/50 transition-colors h-full">
+                    <div class="flex items-center gap-4 mb-6">
+                        <i class="fas fa-tools text-emerald-400 text-3xl"></i>
+                        <h3 class="text-2xl font-bold text-white">Tools & Platforms</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 rounded-full bg-slate-800 border border-slate-700 text-base text-slate-300 hover:text-emerald-400 hover:border-emerald-400 transition-colors">MS Project</span>
+                        <span class="px-4 py-2 rounded-full bg-slate-800 border border-slate-700 text-base text-slate-300 hover:text-emerald-400 hover:border-emerald-400 transition-colors">Salesforce CRM</span>
+                        <span class="px-4 py-2 rounded-full bg-slate-800 border border-slate-700 text-base text-slate-300 hover:text-emerald-400 hover:border-emerald-400 transition-colors">Jira/Confluence</span>
+                        <span class="px-4 py-2 rounded-full bg-slate-800 border border-slate-700 text-base text-slate-300 hover:text-emerald-400 hover:border-emerald-400 transition-colors">Version Control Systems</span>
+                        <span class="px-4 py-2 rounded-full bg-slate-800 border border-slate-700 text-base text-slate-300 hover:text-emerald-400 hover:border-emerald-400 transition-colors">CI/CD Pipelines</span>
+                    </div>
+                </div>
+
+                <div class="glass p-8 rounded-2xl reveal delay-300 hover:border-orange-500/50 transition-colors h-full">
+                    <div class="flex items-center gap-4 mb-6">
+                        <i class="fas fa-brain text-orange-400 text-3xl"></i>
+                        <h3 class="text-2xl font-bold text-white">Core Competencies</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 rounded-full bg-slate-800 border border-slate-700 text-base text-slate-300 hover:text-orange-400 hover:border-orange-400 transition-colors">Requirements Gathering</span>
+                        <span class="px-4 py-2 rounded-full bg-slate-800 border border-slate-700 text-base text-slate-300 hover:text-orange-400 hover:border-orange-400 transition-colors">Business Domain Modeling</span>
+                        <span class="px-4 py-2 rounded-full bg-slate-800 border border-slate-700 text-base text-slate-300 hover:text-orange-400 hover:border-orange-400 transition-colors">Process Mapping (Visio/Lucidchart)</span>
+                        <span class="px-4 py-2 rounded-full bg-slate-800 border border-slate-700 text-base text-slate-300 hover:text-orange-400 hover:border-orange-400 transition-colors">User Story Development</span>
+                        <span class="px-4 py-2 rounded-full bg-slate-800 border border-slate-700 text-base text-slate-300 hover:text-orange-400 hover:border-orange-400 transition-colors">Agile Coaching/Mentorship</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-28 px-6 bg-slate-800/50">
+        <div class="max-w-4xl mx-auto text-center reveal">
+            <h2 class="text-5xl font-bold mb-6">Let's Connect</h2>
+            <p class="text-xl text-slate-400 mb-12">I am currently open to new technical leadership and project management opportunities. Feel free to reach out.</p>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="p-6 glass rounded-xl hover:border-violet-500/50 transition-colors border-l-4 border-violet-500">
+                    <i class="fas fa-envelope text-3xl text-violet-400 mb-4"></i>
+                    <h4 class="font-bold text-white text-lg">Email Me</h4>
+                    <p class="text-base text-slate-400 mt-2">
+                        <a href="mailto:sareenaphilip15@gmail.com" class="hover:text-violet-300 transition-colors">sareenaphilip15@gmail.com</a>
+                    </p>
+                </div>
+                <div class="p-6 glass rounded-xl hover:border-emerald-500/50 transition-colors border-l-4 border-emerald-500">
+                    <i class="fab fa-linkedin text-3xl text-emerald-400 mb-4"></i>
+                    <h4 class="font-bold text-white text-lg">Connect</h4>
+                    <p class="text-base text-slate-400 mt-2">
+                        <a href="https://www.linkedin.com/in/sareena-philip" target="_blank" class="hover:text-emerald-300 transition-colors">LinkedIn Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <script>
-        // JavaScript for fade-in animations on scroll
-        const sections = document.querySelectorAll('.fade-in-section');
+        // Smooth Scrolling for Navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
+        // Typewriter Effect
+        const typewriter = document.getElementById('typewriter');
+        const phrases = [
+            "Technical Project Manager", 
+            "Data & Business Analyst", 
+            "PMP | CAPM | CSM Certified"
+        ];
+        let i = 0;
+        let j = 0;
+        let currentPhrase = '';
+        let isDeleting = false;
+
+        function type() {
+            currentPhrase = phrases[i];
+            if (isDeleting) {
+                typewriter.textContent = currentPhrase.substring(0, j - 1);
+                j--;
+            } else {
+                typewriter.textContent = currentPhrase.substring(0, j + 1);
+                j++;
+            }
+
+            if (!isDeleting && j === currentPhrase.length) {
+                setTimeout(() => isDeleting = true, 1500);
+            } else if (isDeleting && j === 0) {
+                isDeleting = false;
+                i = (i + 1) % phrases.length;
+            }
+
+            const speed = isDeleting ? 75 : (j === currentPhrase.length ? 150 : 150);
+            setTimeout(type, speed);
+        }
+
+        document.addEventListener('DOMContentLoaded', type);
+
+        // Scroll Reveal Logic
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            revealElements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 150) {
+                    el.classList.add('active');
                 }
             });
-        }, {
-            threshold: 0.1 // Trigger when 10% of the element is visible
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+
+        // Counter Animation Logic
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200;
+
+        const updateCount = (counter, target) => {
+            let count = 0;
+            const increment = target / speed;
+
+            const timer = setInterval(() => {
+                count += increment;
+                if (count >= target) {
+                    clearInterval(timer);
+                    counter.textContent = target;
+                } else {
+                    counter.textContent = Math.ceil(count);
+                }
+            }, 1);
+        };
+
+        const counterSection = document.getElementById('projects');
+        let counterExecuted = false;
+
+        const checkCounterVisibility = () => {
+            const windowHeight = window.innerHeight;
+            const sectionTop = counterSection.getBoundingClientRect().top;
+            
+            if (sectionTop < windowHeight - 150 && !counterExecuted) {
+                counters.forEach(counter => {
+                    const target = +counter.getAttribute('data-target');
+                    updateCount(counter, target);
+                });
+                counterExecuted = true;
+            }
+        };
+
+        window.addEventListener('scroll', checkCounterVisibility);
+        checkCounterVisibility();
+
+        // 360-Degree Click Animation
+        const certCards = document.querySelectorAll('#certifications .glass');
+
+        certCards.forEach(card => {
+            card.addEventListener('click', function() {
+                if (this.classList.contains('animate-spin-once')) {
+                    return;
+                }
+                this.classList.add('animate-spin-once');
+                this.addEventListener('animationend', function handler(e) {
+                    if (e.animationName === 'spin-360') {
+                        this.classList.remove('animate-spin-once');
+                        this.removeEventListener('animationend', handler);
+                    }
+                });
+            });
         });
 
-        sections.forEach(section => {
-            observer.observe(section);
+        // Project Modal Functions
+        const projectData = {
+            agile: {
+                title: 'Agile Transformation Initiative',
+                company: 'Wisenbaker Builder Services',
+                year: '2024',
+                color: 'cyan',
+                content: `
+                    <h3 class="text-2xl font-bold text-cyan-400 mb-4">Challenge</h3>
+                    <p class="text-slate-300 mb-6">Manufacturing operations required modernization of project delivery methodology to improve efficiency and cross-functional collaboration.</p>
+                    
+                    <h3 class="text-2xl font-bold text-cyan-400 mb-4">Solution</h3>
+                    <p class="text-slate-300 mb-6">Led enterprise-wide Agile adoption, conducting training sessions, establishing sprint cadences, and implementing Jira workflows for production floor teams.</p>
+                    
+                    <h3 class="text-2xl font-bold text-cyan-400 mb-4">Impact</h3>
+                    <ul class="text-slate-300 space-y-2 list-disc list-inside">
+                        <li>Reduced project cycle time by 35%</li>
+                        <li>Improved team velocity metrics by 40%</li>
+                        <li>Trained 25+ staff members on Agile principles</li>
+                    </ul>
+                `
+            },
+            tablet: {
+                title: 'Sauce & Spoon Kiosk Rollout',
+                company: 'Google Project Management Capstone',
+                year: '2023',
+                color: 'violet',
+                content: `
+                    <h3 class="text-2xl font-bold text-violet-400 mb-4">Challenge</h3>
+                    <p class="text-slate-300 mb-6">Restaurant chain needed to implement self-service kiosks across multiple locations while maintaining service quality and managing stakeholder expectations.</p>
+                    
+                    <h3 class="text-2xl font-bold text-violet-400 mb-4">Solution</h3>
+                    <p class="text-slate-300 mb-6">Developed comprehensive project plan including risk assessment, resource allocation, stakeholder communication strategy, and phased rollout approach.</p>
+                    
+                    <h3 class="text-2xl font-bold text-violet-400 mb-4">Deliverables</h3>
+                    <ul class="text-slate-300 space-y-2 list-disc list-inside">
+                        <li>Complete project charter and scope documentation</li>
+                        <li>Risk mitigation strategies and contingency plans</li>
+                        <li>Stakeholder communication matrix</li>
+                        <li>Quality assurance framework</li>
+                    </ul>
+                `
+            },
+            pmi: {
+                title: 'PMI Technical Knowledge Sharing',
+                company: 'Project Management Institute',
+                year: '2024',
+                color: 'emerald',
+                content: `
+                    <h3 class="text-2xl font-bold text-emerald-400 mb-4">Overview</h3>
+                    <p class="text-slate-300 mb-6">Volunteer role facilitating technical knowledge transfer sessions for PMI community members, bridging theory and practical implementation.</p>
+                    
+                    <h3 class="text-2xl font-bold text-emerald-400 mb-4">Contributions</h3>
+                    <ul class="text-slate-300 space-y-2 list-disc list-inside">
+                        <li>Led sessions on Agile transformation in manufacturing</li>
+                        <li>Mentored peers on SQL-based project analytics</li>
+                        <li>Shared best practices for technical PM roles</li>
+                        <li>Facilitated discussions on data-driven decision making</li>
+                    </ul>
+                    
+                    <h3 class="text-2xl font-bold text-emerald-400 mb-4">Impact</h3>
+                    <p class="text-slate-300">Supporting professional development within the PM community and promoting knowledge sharing across industries.</p>
+                `
+            }
+        };
+
+        function openProject(projectId) {
+            const modal = document.getElementById('project-modal');
+            const modalBody = document.getElementById('modal-body');
+            const project = projectData[projectId];
+            
+            if (project) {
+                modalBody.innerHTML = `
+                    <h2 class="text-3xl font-bold text-white mb-2">${project.title}</h2>
+                    <p class="text-${project.color}-400 text-lg mb-6">${project.company} | ${project.year}</p>
+                    ${project.content}
+                `;
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeProject() {
+            const modal = document.getElementById('project-modal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeProject();
+            }
         });
     </script>
-
 </body>
 </html>
