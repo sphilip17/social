@@ -51,6 +51,25 @@
             -webkit-text-fill-color: transparent;
         }
 
+        /*Featured Project Animation */
+        /* Initial state: hidden and slightly below position */
+        .reveal {
+             opacity: 0;
+                transform: translateY(30px);
+                transition: all 0.8s ease-out;
+        }
+
+        /* Active state: fully visible and at original position */
+        .reveal.active {
+            opacity: 1;
+                transform: translateY(0);
+        }
+
+    /* Add a slight delay to each card so they pop in one by one */
+        .grid > div:nth-child(1) { transition-delay: 0.1s; }
+        .grid > div:nth-child(2) { transition-delay: 0.2s; }
+        .grid > div:nth-child(3) { transition-delay: 0.3s; }
+        .grid > div:nth-child(4) { transition-delay: 0.4s; }
         /* Background Animation */
         .blob {
             position: absolute;
@@ -248,92 +267,187 @@
         </div>
     </section>
 
-    <section id="experience" class="py-28 px-6 bg-slate-900/50">
-        <div class="max-w-7xl mx-auto">
+ 
+  <section id="experience" class="py-28 px-6 bg-slate-900/50">
+        <div class="max-w-6xl mx-auto">
             <div class="text-center mb-20 reveal">
                 <h2 class="text-5xl font-bold mb-6">Professional Experience</h2>
-                <p class="text-xl text-slate-400">A timeline of my technical leadership and analytical roles.</p>
+                <p class="text-xl text-slate-400">Click any role to expand details • Timeline view</p>
             </div>
 
-            <div class="space-y-12 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-600 before:to-transparent">
+            <div class="space-y-8 relative before:absolute before:left-[23px] before:top-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-cyan-500 before:via-violet-500 before:to-orange-500">
                 
-                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group reveal">
-                    <div class="flex items-center justify-center w-12 h-12 rounded-full border border-cyan-500 bg-slate-900 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                        <i class="fas fa-briefcase text-cyan-400 text-base"></i>
+                <!-- Role 1 -->
+                <div class="exp-card relative pl-16 reveal">
+                    <div class="absolute left-0 w-12 h-12 rounded-full border-2 border-cyan-500 bg-slate-900 flex items-center justify-center z-10">
+                    <i class="fas fa-code text-cyan-400"></i>
+                </div>
+    
+            <div class="glass p-6 rounded-2xl cursor-pointer hover:border-cyan-500/50 transition-all" onclick="toggleExperience(this)">
+                <div class="flex justify-between items-start mb-3 gap-4">
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1">
+                    <h3 class="font-bold text-2xl text-white">Technical Project Manager | Application Analyst</h3>
+                    <i class="fas fa-chevron-down text-slate-400 text-sm transition-transform duration-300 exp-arrow"></i>
+                </div>
+                <p class="text-cyan-400 text-base font-semibold">Wisenbaker Builder Services</p>
+            </div>
+            <span class="text-xs bg-cyan-900/30 text-cyan-300 px-3 py-1 rounded-full font-mono whitespace-nowrap">July 2024 - Present</span>
+        </div>
+        
+        <p class="text-slate-400 text-sm mb-3">Architecting manufacturing data pipelines and B2B platforms through hands-on SQL engineering.</p>
+        
+        <div class="exp-content hidden mt-4 pt-4 border-t border-slate-700/50 space-y-3">
+            <div class="flex items-start gap-3 text-slate-400 text-sm">
+                <i class="fas fa-cogs text-cyan-400 mt-1 shrink-0 text-xs"></i>
+                <p><strong>Delivered 90% production efficiency</strong> by re-engineering the Gold Ticket asset-tracking process; personally defined the <strong>backend data logic</strong> and mapped AS-IS/TO-BE manufacturing workflows.</p>
+            </div>
+            <div class="flex items-start gap-3 text-slate-400 text-sm">
+                <i class="fas fa-database text-cyan-400 mt-1 shrink-0 text-xs"></i>
+                <p><strong>Achieved $30K monthly savings</strong> via end-to-end RFID implementation; engineered <strong>SQL data flows</strong> and validated vendor integrations for real-time inventory optimization.</p>
+            </div>
+            <div class="flex items-start gap-3 text-slate-400 text-sm">
+                <i class="fas fa-layer-group text-cyan-400 mt-1 shrink-0 text-xs"></i>
+                <p>Architected <strong>Dealer Web Portal (Greenfield B2B)</strong> backend; developed SQL-based KPI models and automated data ingestion for dealer onboarding and operational visibility.</p>
+            </div>
+            <div class="flex items-start gap-3 text-slate-400 text-sm">
+                <i class="fas fa-chart-area text-cyan-400 mt-1 shrink-0 text-xs"></i>
+                <p>Built and maintain <strong>automated operational dashboards</strong> using SQL/SSRS; perform deep-dive data cleaning, anomaly detection, and mentored 3+ junior analysts on SQL best practices.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+                <!-- Role 2 -->
+               <div class="exp-card relative pl-16 reveal">
+    <div class="absolute left-0 w-12 h-12 rounded-full border-2 border-violet-500 bg-slate-900 flex items-center justify-center z-10">
+        <i class="fas fa-microscope text-violet-400"></i>
+    </div>
+    
+    <div class="glass p-6 rounded-2xl cursor-pointer hover:border-violet-500/50 transition-all" onclick="toggleExperience(this)">
+        <div class="flex justify-between items-start mb-3 gap-4">
+            <div class="flex-1">
+                <div class="flex items-center gap-2 mb-1">
+                    <h3 class="font-bold text-2xl text-white">Technical Project Coordinator</h3>
+                    <i class="fas fa-chevron-down text-slate-400 text-sm transition-transform duration-300 exp-arrow"></i>
+                </div>
+                <p class="text-violet-400 text-base font-semibold">Catalent Pharma Solutions</p>
+            </div>
+            <span class="text-xs bg-violet-900/30 text-violet-300 px-3 py-1 rounded-full font-mono whitespace-nowrap">May 2023 - Aug 2023</span>
+        </div>
+        
+        <p class="text-slate-400 text-sm mb-3">Optimizing PMO operations through technical process mining and data-driven workflow automation.</p>
+        
+        <div class="exp-content hidden mt-4 pt-4 border-t border-slate-700/50 space-y-2.5">
+            <div class="flex items-start gap-2 text-slate-300 text-sm">
+                <i class="fas fa-bolt text-violet-400 mt-1 shrink-0 text-xs"></i>
+                <p><strong>Achieved 60% faster approvals</strong> by architecting a unified analytics platform that consolidated 5+ fragmented SharePoint repositories.</p>
+            </div>
+            <div class="flex items-start gap-2 text-slate-300 text-sm">
+                <i class="fas fa-code-branch text-violet-400 mt-1 shrink-0 text-xs"></i>
+                <p>Identified <strong>12+ operational bottlenecks</strong> across manufacturing units by performing <strong>SQL-based process documentation</strong> and Visio workflow mapping.</p>
+            </div>
+            <div class="flex items-start gap-2 text-slate-300 text-sm">
+                <i class="fas fa-calculator text-violet-400 mt-1 shrink-0 text-xs"></i>
+                <p><strong>Developed optimization dashboards</strong> tracking 15+ financial KPIs; engineered data models for CAPEX forecasting and strategic budget planning.</p>
+            </div>
+            <div class="flex items-start gap-2 text-slate-300 text-sm">
+                <i class="fas fa-search-plus text-violet-400 mt-1 shrink-0 text-xs"></i>
+                <p>Conducted technical root cause analysis, delivering data-backed recommendations that significantly reduced lifecycle approval times.</p>
+            </div>
+        </div>
+    </div>
+</div>
+                <!-- Role 3 -->
+                <div class="exp-card relative pl-16 reveal">
+                    <div class="absolute left-0 w-12 h-12 rounded-full border-2 border-emerald-500 bg-slate-900 flex items-center justify-center z-10">
+                        <i class="fas fa-university text-emerald-400"></i>
                     </div>
-                    <div class="w-[calc(100%-5rem)] md:w-[calc(50%-3rem)] glass p-8 rounded-2xl hover:scale-[1.01] transition-transform duration-300">
-                        <div class="flex flex-col md:flex-row justify-between items-start mb-4 gap-2">
-                            <h3 class="font-bold text-2xl text-white">Technical Project Manager</h3>
-                            <span class="text-sm bg-cyan-900/50 text-cyan-300 px-3 py-1 rounded font-mono">July 2024 - Present</span>
+                    
+                    <div class="glass p-6 rounded-2xl cursor-pointer hover:border-emerald-500/50 transition-all" onclick="toggleExperience(this)">
+                        <div class="flex justify-between items-start mb-3 gap-4">
+                            <div class="flex-1">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <h3 class="font-bold text-2xl text-white">Operations Project Manager</h3>
+                                    <i class="fas fa-chevron-down text-slate-400 text-sm transition-transform duration-300 exp-arrow"></i>
+                                </div>
+                                <p class="text-emerald-400 text-base font-semibold">Illinois Institute of Technology</p>
+                            </div>
+                            <span class="text-xs bg-emerald-900/30 text-emerald-300 px-3 py-1 rounded-full font-mono whitespace-nowrap">Sep 2022 - May 2024</span>
                         </div>
-                        <h4 class="text-cyan-400 text-lg mb-4 font-semibold">Wisenbaker Builder Services</h4>
-                        <ul class="text-lg text-slate-300 space-y-3 list-disc list-inside">
-                            <li>Delivered 90% production efficiency improvement by re-engineering the Gold Ticket asset-tracking process—conducting requirements analysis, mapping AS-IS/TO-BE workflows, and defining data logic for manufacturing floor operations</li>
-                            <li>Achieved $30K in monthly savings through end-to-end RFID tracking project implementation; coordinated with vendors, validated data flows, and integrated SQL processes for real-time inventory optimization</li>
-                            <li>Lead data-driven initiatives for Dealer Web Portal (greenfield B2B application), defining project scope, modeling workflows, and building SQL-based KPIs and dashboards to support dealer onboarding and operational visibility</li>
-                            <li>Develop and maintain operational dashboards using SQL and SSRS for cross-functional teams; perform data cleaning, transformation, and anomaly detection while training 3+ junior analysts on SQL best practices</li>
-                        </ul>
+                        
+                        <p class="text-slate-400 text-sm mb-3">Managed university-wide CRM operations with KPI-driven performance optimization</p>
+                        
+                        <div class="exp-content hidden mt-4 pt-4 border-t border-slate-700/50 space-y-2.5">
+                            <div class="flex items-start gap-2 text-slate-300 text-sm">
+                                <i class="fas fa-database text-emerald-400 mt-1 shrink-0 text-xs"></i>
+                                <p><strong>99% data accuracy</strong> in Salesforce CRM handling 60+ daily stakeholder interactions</p>
+                            </div>
+                            <div class="flex items-start gap-2 text-slate-300 text-sm">
+                                <i class="fas fa-exclamation-triangle text-emerald-400 mt-1 shrink-0 text-xs"></i>
+                                <p><strong>25% error reduction</strong> through targeted training programs for 15 staff members</p>
+                            </div>
+                            <div class="flex items-start gap-2 text-slate-300 text-sm">
+                                <i class="fas fa-chart-pie text-emerald-400 mt-1 shrink-0 text-xs"></i>
+                                <p>Built KPI monitoring system tracking participation, performance & engagement for leadership planning</p>
+                            </div>
+                            <div class="flex items-start gap-2 text-slate-300 text-sm">
+                                <i class="fas fa-graduation-cap text-emerald-400 mt-1 shrink-0 text-xs"></i>
+                                <p>Analyzed Student Exchange program operations optimizing enrollment, completion & resource allocation</p>
+                            </div>
+                            <div class="flex items-start gap-2 text-slate-300 text-sm">
+                                <i class="fas fa-cogs text-emerald-400 mt-1 shrink-0 text-xs"></i>
+                                <p>Designed performance framework improving operational transparency & cross-departmental alignment</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group reveal">
-                    <div class="flex items-center justify-center w-12 h-12 rounded-full border border-violet-500 bg-slate-900 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                        <i class="fas fa-flask text-violet-400 text-base"></i>
+                <!-- Role 4 -->
+                <div class="exp-card relative pl-16 reveal">
+                    <div class="absolute left-0 w-12 h-12 rounded-full border-2 border-orange-500 bg-slate-900 flex items-center justify-center z-10">
+                        <i class="fas fa-chart-line text-orange-400"></i>
                     </div>
-                    <div class="w-[calc(100%-5rem)] md:w-[calc(50%-3rem)] glass p-8 rounded-2xl hover:scale-[1.01] transition-transform duration-300">
-                        <div class="flex flex-col md:flex-row justify-between items-start mb-4 gap-2">
-                            <h3 class="font-bold text-2xl text-white">Technical Project Coordinator Intern</h3>
-                            <span class="text-sm bg-violet-900/50 text-violet-300 px-3 py-1 rounded font-mono">May 2023 - Aug 2023</span>
+                    
+                    <div class="glass p-6 rounded-2xl cursor-pointer hover:border-orange-500/50 transition-all" onclick="toggleExperience(this)">
+                        <div class="flex justify-between items-start mb-3 gap-4">
+                            <div class="flex-1">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <h3 class="font-bold text-2xl text-white">Application Analyst</h3>
+                                    <i class="fas fa-chevron-down text-slate-400 text-sm transition-transform duration-300 exp-arrow"></i>
+                                </div>
+                                <p class="text-orange-400 text-base font-semibold">Decimal Technologies</p>
+                            </div>
+                            <span class="text-xs bg-orange-900/30 text-orange-300 px-3 py-1 rounded-full font-mono whitespace-nowrap">Jun 2020 - Jul 2021</span>
                         </div>
-                        <h4 class="text-violet-400 text-lg mb-4 font-semibold">Catalent Pharma Solutions</h4>
-                        <ul class="text-lg text-slate-300 space-y-3 list-disc list-inside">
-                            <li>Reduced project approval time by 60% by consolidating 5+ SharePoint repositories into a unified analytics platform with automated reporting—streamlining workflows across PMO, engineering, and quality teams</li>
-                            <li>Analyzed workflows across 3 manufacturing units using Visio and SQL-backed process documentation, identifying 12+ bottlenecks and data inconsistencies that informed process redesign</li>
-                            <li>Built process optimization models and performance dashboards tracking 15+ KPIs, enabling real-time visibility into CAPEX forecasting and budget planning</li>
-                            <li>Partnered with cross-functional teams to implement data-informed process enhancements, conducting root cause analysis and delivering actionable recommendations that reduced approval cycle time</li>
-                        </ul>
+                        
+                        <p class="text-slate-400 text-sm mb-3">Managed Agile delivery for a fintech SaaS platform with 1M+ Play Store downloads, focusing on user retention and data-driven feature prioritization</p>
+                        
+                        <div class="exp-content hidden mt-4 pt-4 border-t border-slate-700/50 space-y-2.5">
+                            <div class="flex items-start gap-2 text-slate-300 text-sm">
+                                <i class="fas fa-mobile-alt text-orange-400 mt-1 shrink-0 text-xs"></i>
+                                <p>User analytics for <strong>1M+ mobile banking users</strong> with funnel analysis, cohort segmentation & predictive modeling</p>
+                            </div>
+                            <div class="flex items-start gap-2 text-slate-300 text-sm">
+                                <i class="fas fa-tasks text-orange-400 mt-1 shrink-0 text-xs"></i>
+                                <p><strong>20% backlog reduction</strong> via data-driven prioritization frameworks & ROI analysis</p>
+                            </div>
+                            <div class="flex items-start gap-2 text-slate-300 text-sm">
+                                <i class="fas fa-users-cog text-orange-400 mt-1 shrink-0 text-xs"></i>
+                                <p>Led <strong>7-member Agile team</strong> to 95% on-time delivery with cross-functional dashboards</p>
+                            </div>
+                            <div class="flex items-start gap-2 text-slate-300 text-sm">
+                                <i class="fas fa-clock text-orange-400 mt-1 shrink-0 text-xs"></i>
+                                <p>Cut query resolution time by 30% establishing analytics documentation & self-service reporting tools</p>
+                            </div>
+                            <div class="flex items-start gap-2 text-slate-300 text-sm">
+                                <i class="fas fa-server text-orange-400 mt-1 shrink-0 text-xs"></i>
+                                <p>Designed advanced SQL data models ensuring continuity during platform migrations</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group reveal">
-                    <div class="flex items-center justify-center w-12 h-12 rounded-full border border-cyan-500 bg-slate-900 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                        <i class="fas fa-university text-cyan-400 text-base"></i>
-                    </div>
-                    <div class="w-[calc(100%-5rem)] md:w-[calc(50%-3rem)] glass p-8 rounded-2xl hover:scale-[1.01] transition-transform duration-300">
-                        <div class="flex flex-col md:flex-row justify-between items-start mb-4 gap-2">
-                            <h3 class="font-bold text-2xl text-white">Operations Project Manager (GA)</h3>
-                            <span class="text-sm bg-cyan-900/50 text-cyan-300 px-3 py-1 rounded font-mono">Sep 2022 - May 2024</span>
-                        </div>
-                        <h4 class="text-cyan-400 text-lg mb-4 font-semibold">Illinois Institute of Technology</h4>
-                        <ul class="text-lg text-slate-300 space-y-3 list-disc list-inside">
-                            <li>Maintained 99% data accuracy across large-scale Salesforce CRM operations handling 60+ daily stakeholder interactions; ensured timely issue resolution and data integrity for university-wide programs</li>
-                            <li>Reduced operational errors by 25% by delivering targeted training programs for 15 staff members, identifying skill gaps through performance analytics and implementing standardized procedures</li>
-                            <li>Built comprehensive KPI monitoring system tracking program participation, staff performance, and student engagement metrics—providing actionable dashboards for university leadership strategic planning</li>
-                            <li>Conducted statistical analysis on Student Exchange program operations, analyzing enrollment trends, completion rates, and resource allocation to optimize program efficiency and inform policy decisions</li>
-                            <li>Designed performance measurement framework with structured process documentation, improving operational transparency and cross-departmental workflow alignment</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group reveal">
-                    <div class="flex items-center justify-center w-12 h-12 rounded-full border border-violet-500 bg-slate-900 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                        <i class="fas fa-chart-line text-violet-400 text-base"></i>
-                    </div>
-                    <div class="w-[calc(100%-5rem)] md:w-[calc(50%-3rem)] glass p-8 rounded-2xl hover:scale-[1.01] transition-transform duration-300">
-                        <div class="flex flex-col md:flex-row justify-between items-start mb-4 gap-2">
-                            <h3 class="font-bold text-2xl text-white">Application Analyst</h3>
-                            <span class="text-sm bg-violet-900/50 text-violet-300 px-3 py-1 rounded font-mono">Jun 2020 - Jul 2021</span>
-                        </div>
-                        <h4 class="text-violet-400 text-lg mb-4 font-semibold">Decimal Technologies</h4>
-                        <ul class="text-lg text-slate-300 space-y-3 list-disc list-inside">
-                            <li>Conducted user analytics for mobile banking app serving 1M+ users, performing funnel analysis, cohort segmentation, and predictive modeling to identify optimization opportunities that informed product roadmap decisions</li>
-                            <li>Reduced product backlog by 20% by partnering with product stakeholders to analyze feature performance, conduct ROI analysis, and implement data-driven prioritization frameworks</li>
-                            <li>Led 7-member Agile analytics team to 95% on-time delivery while implementing cross-functional dashboards and reporting capabilities that improved data accuracy and stakeholder visibility</li>
-                            <li>Cut stakeholder query resolution time by 30% by establishing analytics documentation standards, KPI frameworks, and self-service reporting tools that improved data transparency</li>
-                            <li>Designed and maintained advanced data models for core B2B SaaS banking platform using SQL, ensuring data continuity and system integrity during operational transitions and platform migrations</li>
-                        </ul>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -517,33 +631,110 @@
         </div>
     </section>
 
-    <section id="featured-projects" class="py-28 px-6 bg-slate-900/50">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-5xl font-bold text-white mb-4 reveal">Featured Projects</h2>
-                <p class="text-slate-400 text-lg max-w-2xl mx-auto">Independent initiatives demonstrating change leadership and technical execution.</p>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="project-card glass p-8 rounded-2xl border border-slate-800 reveal" onclick="openProject('agile')">
-                    <div class="text-cyan-400 mb-4"><i class="fas fa-sync-alt text-3xl"></i></div>
-                    <h3 class="text-xl font-bold text-white mb-2">Agile Transformation Initiative</h3>
-                    <p class="text-slate-400 text-sm mb-4">Wisenbaker Builder Services | 2024</p>
-                    <span class="text-cyan-400 text-sm font-semibold hover:underline">View Case Study →</span>
-                </div>
-                <div class="project-card glass p-8 rounded-2xl border border-slate-800 reveal delay-100" onclick="openProject('tablet')">
-                    <div class="text-violet-400 mb-4"><i class="fas fa-mobile-alt text-3xl"></i></div>
-                    <h3 class="text-xl font-bold text-white mb-2">Sauce & Spoon Kiosk Rollout</h3>
-                    <p class="text-slate-400 text-sm mb-4">Google Capstone | 2023</p>
-                    <span class="text-violet-400 text-sm font-semibold hover:underline">View Case Study →</span>
-                </div>
-                <div class="project-card glass p-8 rounded-2xl border border-slate-800 reveal delay-200" onclick="openProject('pmi')">
-                    <div class="text-emerald-400 mb-4"><i class="fas fa-users text-3xl"></i></div>
-                    <h3 class="text-xl font-bold text-white mb-2">PMI Technical Sessions</h3>
-                    <p class="text-slate-400 text-sm mb-4">Volunteer Speaker | 2024</p>
-                    <span class="text-emerald-400 text-sm font-semibold hover:underline">View Case Study →</span>
-                </div>
-            </div>
+    <section id="projects" class="py-28 px-6 bg-slate-900">
+    <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16 reveal">
+            <h2 class="text-5xl font-bold mb-6 text-white">Featured Projects</h2>
+            <p class="text-xl text-slate-400">Technical execution and backend architecture driven by data-first project management.</p>
         </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <div class="glass p-10 rounded-2xl border border-slate-800 hover:border-cyan-500/50 transition-all flex flex-col h-full reveal shadow-xl">
+                <div class="mb-6">
+                    <div class="w-12 h-12 rounded-lg bg-cyan-500/10 flex items-center justify-center">
+                        <i class="fas fa-database text-cyan-400 text-2xl"></i>
+                    </div>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-1">Agile Data Transformation</h3>
+                <p class="text-slate-500 text-xs mb-4 font-mono uppercase tracking-tighter">Manufacturing Ops | 2024</p>
+                
+                <div class="space-y-4 mb-8 flex-grow">
+                    <p class="text-slate-200 text-base leading-relaxed">
+                        <strong class="text-cyan-400">Problem:</strong> Delayed delivery cycles caused by siloed communication and manual progress tracking.
+                    </p>
+                    <p class="text-slate-200 text-base leading-relaxed">
+                        <strong class="text-cyan-400">Solution:</strong> Engineered an <strong>automated SQL reporting engine</strong> integrated with Jira to visualize velocity, increasing on-time delivery to 95%.
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+                    <span class="text-slate-500 text-xs font-semibold uppercase tracking-wider">SQL • Jira Automation</span>
+                    <i class="fas fa-code text-cyan-500/50 text-xs"></i>
+                </div>
+            </div>
+
+            <div class="glass p-10 rounded-2xl border border-slate-800 hover:border-violet-500/50 transition-all flex flex-col h-full reveal shadow-xl">
+                <div class="mb-6">
+                    <div class="w-12 h-12 rounded-lg bg-violet-500/10 flex items-center justify-center">
+                        <i class="fas fa-network-wired text-violet-400 text-2xl"></i>
+                    </div>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-1">B2B Dealer Web Portal</h3>
+                <p class="text-slate-500 text-xs mb-4 font-mono uppercase tracking-tighter">Greenfield SaaS | 2024</p>
+                
+                <div class="space-y-4 mb-8 flex-grow">
+                    <p class="text-slate-200 text-base leading-relaxed">
+                        <strong class="text-violet-400">Problem:</strong> Scalability bottlenecks and high friction in manual dealer onboarding workflows.
+                    </p>
+                    <p class="text-slate-200 text-base leading-relaxed">
+                        <strong class="text-violet-400">Solution:</strong> <strong>Architected SQL backend logic</strong> and API data mapping to automate pipelines and real-time operational KPI dashboards.
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+                    <span class="text-slate-500 text-xs font-semibold uppercase tracking-wider">SQL • API Architecture</span>
+                    <i class="fas fa-server text-violet-500/50 text-xs"></i>
+                </div>
+            </div>
+
+            <div class="glass p-10 rounded-2xl border border-slate-800 hover:border-emerald-500/50 transition-all flex flex-col h-full reveal shadow-xl">
+                <div class="mb-6">
+                    <div class="w-12 h-12 rounded-lg bg-emerald-500/10 flex items-center justify-center">
+                        <i class="fas fa-broadcast-tower text-emerald-400 text-2xl"></i>
+                    </div>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-1">RFID Asset Optimization</h3>
+                <p class="text-slate-500 text-xs mb-4 font-mono uppercase tracking-tighter">Inventory Tech | 2024</p>
+                
+                <div class="space-y-4 mb-8 flex-grow">
+                    <p class="text-slate-200 text-base leading-relaxed">
+                        <strong class="text-emerald-400">Problem:</strong> Lack of real-time inventory visibility leading to significant manufacturing floor waste.
+                    </p>
+                    <p class="text-slate-200 text-base leading-relaxed">
+                        <strong class="text-emerald-400">Solution:</strong> Built <strong>end-to-end SQL data flows</strong> for RFID tracking, validating vendor data to save $30K monthly.
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+                    <span class="text-slate-500 text-xs font-semibold uppercase tracking-wider">SQL • RFID Integration</span>
+                    <i class="fas fa-bolt text-emerald-500/50 text-xs"></i>
+                </div>
+            </div>
+
+            <div class="glass p-10 rounded-2xl border border-slate-800 hover:border-orange-500/50 transition-all flex flex-col h-full reveal shadow-xl">
+                <div class="mb-6">
+                    <div class="w-12 h-12 rounded-lg bg-orange-500/10 flex items-center justify-center">
+                        <i class="fas fa-globe-americas text-orange-400 text-2xl"></i>
+                    </div>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-1">Global Exchange & Integration</h3>
+                <p class="text-slate-500 text-xs mb-4 font-mono uppercase tracking-tighter">International Residency | Special Project</p>
+                
+                <div class="space-y-4 mb-8 flex-grow">
+                    <p class="text-slate-200 text-base leading-relaxed">
+                        <strong class="text-orange-400">Problem:</strong> Navigating complex logistical, financial, and academic lifecycles under strict regulatory compliance.
+                    </p>
+                    <p class="text-slate-200 text-base leading-relaxed">
+                        <strong class="text-orange-400">Solution:</strong> Directed end-to-end <strong>project lifecycle management</strong>, coordinating international milestones with a 100% success rate.
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+                    <span class="text-slate-500 text-xs font-semibold uppercase tracking-wider">Global Operation • Student Exchange Program</span>
+                    <i class="fas fa-map-marked-alt text-orange-500/50 text-xs"></i>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
         
         <div id="project-modal" onclick="closeProject()">
             <div class="cloud-content p-8 md:p-12 relative" onclick="event.stopPropagation()">
@@ -858,5 +1049,78 @@
             }
         });
     </script>
+
+  <script>
+function toggleExperience(element) {
+    // Select the content and the arrow icon
+    const content = element.querySelector('.exp-content');
+    const arrow = element.querySelector('.exp-arrow');
+
+    // Check if it's currently hidden
+    const isHidden = content.classList.contains('hidden');
+
+    if (isHidden) {
+        // 1. Remove hidden class so it's part of the DOM
+        content.classList.remove('hidden');
+        
+        // 2. Set a small timeout to allow the browser to recognize the class change
+        // then set max-height to a value larger than your content
+        setTimeout(() => {
+            content.style.maxHeight = '500px';
+            content.style.opacity = '1';
+            if (arrow) arrow.style.transform = 'rotate(180deg)';
+        }, 10);
+    } else {
+        // 1. Shrink it back down
+        content.style.maxHeight = '0px';
+        content.style.opacity = '0';
+        if (arrow) arrow.style.transform = 'rotate(0deg)';
+
+        // 2. Wait for the transition to finish before adding 'hidden' back
+        setTimeout(() => {
+            content.classList.add('hidden');
+        }, 300); // This should match your CSS transition time
+    }
+}
+</script>
+
+<script>
+    // 1. Animation Trigger (Scroll Reveal)
+    function reveal() {
+        const reveals = document.querySelectorAll(".reveal");
+        for (let i = 0; i < reveals.length; i++) {
+            const windowHeight = window.innerHeight;
+            const elementTop = reveals[i].getBoundingClientRect().top;
+            const elementVisible = 150; 
+
+            if (elementTop < windowHeight - elementVisible) {
+                reveals[i].classList.add("active");
+            }
+        }
+    }
+
+    // 2. Experience Toggle Function
+    function toggleExperience(element) {
+        const content = element.querySelector('.exp-content');
+        const arrow = element.querySelector('.exp-arrow');
+        
+        // Toggle visibility
+        if (content.classList.contains('hidden')) {
+            content.classList.remove('hidden');
+            arrow.style.transform = 'rotate(180deg)';
+        } else {
+            content.classList.add('hidden');
+            arrow.style.transform = 'rotate(0deg)';
+        }
+    }
+
+    // Event Listeners
+    window.addEventListener("scroll", reveal);
+    
+    // Initial check on load
+    document.addEventListener("DOMContentLoaded", () => {
+        reveal();
+    });
+</script>
 </body>
 </html>
